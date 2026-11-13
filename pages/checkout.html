@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | Tailwear</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=UnifrakturCook:wght@700&family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- <link href="./src/output.css" rel="stylesheet"> -->
+
+  <style type="text/tailwindcss">
+    @layer components {
+      .field { @apply w-full rounded-md border border-neutral-800 bg-neutral-900 px-3 py-3 text-sm text-neutral-200 placeholder:text-neutral-500 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500; }
+      .sec-title { @apply mb-4 text-lg text-white; }
+      .check { @apply flex items-center gap-2 text-sm text-neutral-400; }
+      .check input { @apply h-4 w-4 accent-orange-500; }
+      .tab { @apply flex cursor-pointer items-center justify-center rounded-md border border-neutral-800 bg-neutral-900 py-3 text-xs uppercase tracking-[0.2em] text-neutral-400 transition-colors hover:text-orange-500; }
+      .opt { @apply flex cursor-pointer items-center gap-3 px-4 py-4 text-sm before:h-4 before:w-4 before:shrink-0 before:rounded-full before:border before:border-neutral-600 before:content-['']; }
+      /* ADDED (validation): red border when checkout-validation.js marks a field as invalid */
+      .field[aria-invalid="true"] { @apply border-red-500; }
+      .check input[aria-invalid="true"] { @apply outline outline-2 outline-red-500; }
+    }
+  </style>
+</head>
+<body class="bg-neutral-950 font-['JetBrains_Mono'] text-neutral-200 has-[#menu-toggle:checked]:overflow-hidden">
+
+  <input id="menu-toggle" type="checkbox" class="peer sr-only" aria-label="Open or close the menu" />
+
+  <!-- ============ HEADER (menú global) ============ -->
+  <header class="fixed inset-x-0 top-0 z-40 border-b border-neutral-800/80 bg-neutral-950/80 backdrop-blur-md">
+    <nav class="grid h-16 w-full grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 md:px-8" aria-label="Main navigation">
+
+      <div class="flex min-w-0 items-center gap-2 justify-self-start sm:gap-4">
+        <label for="menu-toggle" class="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded text-white transition-colors hover:text-orange-500" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h16" /></svg>
+        </label>
+        <a href="../index.html" class="truncate font-['UnifrakturCook'] text-2xl leading-none text-white sm:text-3xl">Tailwear</a>
+      </div>
+
+      <!-- Icono del carrito: 44px en móvil, 48px desde sm. cart.js rellena la insignia y abre el panel -->
+      <div class="col-start-3 justify-self-end">
+        <button type="button" data-cart-open aria-label="Open cart, 0 items"
+          class="relative flex h-11 w-11 items-center justify-center rounded text-white transition-colors hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-500 sm:h-12 sm:w-12">
+          <svg class="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 8h12l-1 12H7L6 8Z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span data-cart="badge" data-empty="true" aria-hidden="true"
+            class="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-orange-500 px-1 text-[10px] font-bold leading-none text-black data-[empty=true]:hidden">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ SIDEBAR: OVERLAY ============ -->
+  <label for="menu-toggle" class="pointer-events-none fixed inset-0 z-50 bg-black/70 opacity-0 transition-opacity duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100" aria-hidden="true"></label>
+
+  <!-- ============ SIDEBAR: NAVEGACIÓN PRINCIPAL GLOBAL ============ -->
+  <aside class="invisible fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85%] -translate-x-full flex-col overflow-y-auto border-r border-neutral-800 bg-neutral-950 px-6 py-5 transition-[transform,visibility] duration-300 peer-checked:visible peer-checked:translate-x-0" aria-label="Side menu">
+    <div class="flex items-center justify-between pb-6">
+      <span class="font-['UnifrakturCook'] text-3xl text-white">Tailwear</span>
+      <label for="menu-toggle" class="flex h-11 w-11 cursor-pointer items-center justify-center rounded text-white transition-colors hover:text-orange-500" aria-hidden="true">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </label>
+    </div>
+
+    <ul class="flex flex-col border-t border-neutral-800 text-xs uppercase tracking-[0.2em]">
+      <li><a href="../index.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Home</a></li>
+      <li><a href="star_product.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Tribal Reflective Jacket</a></li>
+      <li><a href="collections.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Collections</a></li>
+      <li><a href="size_guide.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Size Guide</a></li>
+      <li><a href="about_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">About Us</a></li>
+      <li><a href="contact_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Contact Us</a></li>
+      <li><a href="checkout.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500 text-orange-500" aria-current="page">Checkout</a></li>
+    </ul>
+  </aside>
+
+
+
+ 
+  <main class="pt-16">
+    <div class="mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl lg:grid-cols-2">
+
+      <!-- COLUMNA IZQUIERDA -->
+      <section class="px-4 py-10 md:px-8 lg:pr-12" aria-label="Order details">
+        
+        <form action="#" method="post" data-checkout-form novalidate class="mx-auto max-w-xl space-y-10">
+
+          <!-- Notices -->
+          <div class="space-y-4">
+            <p class="rounded-md border border-orange-500/40 bg-orange-500/10 p-4 text-sm text-orange-200" role="note">
+              This is a demo: no real payment is processed.
+            </p>
+            <div class="rounded-md border border-neutral-800 bg-neutral-900 p-4 text-sm leading-relaxed text-neutral-400">
+              <p class="mb-2 text-white">Important:</p>
+              The information in this form will be used on your electronic invoice. <em>This invoice cannot be changed.</em>
+            </div>
+          </div>
+
+          <!-- Contacto
+                -->
+          <fieldset class="space-y-3">
+            <div class="flex items-baseline justify-between">
+              <legend class="sec-title">Contact</legend>
+              <a href="#" class="text-xs text-orange-500 underline underline-offset-4 hover:text-orange-400">Log in</a>
+            </div>
+
+            <!-- Rule: required + valid email format -->
+            <div>
+              <label for="email" class="sr-only">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required placeholder="Email" aria-describedby="error-email" class="field" />
+              <p data-error-for="email" id="error-email" role="alert" class="mt-1 text-xs text-red-400"></p>
+            </div>
+
+            <!-- . Rule: required, minimum 3 characters (replaces "First name" + "Last name") -->
+            <div>
+              <label for="fullname" class="sr-only">Full name</label>
+              <input id="fullname" name="fullname" type="text" autocomplete="name" placeholder="Full name" aria-describedby="error-fullname" class="field" />
+              <p data-error-for="fullname" id="error-fullname" role="alert" class="mt-1 text-xs text-red-400"></p>
+            </div>
+
+            <!-- "ID number"). Rule: required, numbers only, 6 to 10 digits -->
+            <div>
+              <label for="document" class="sr-only">Document number</label>
+              <input id="document" name="document" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="Document number (6 to 10 digits)" aria-describedby="error-document" class="field" />
+              <p data-error-for="document" id="error-document" role="alert" class="mt-1 text-xs text-red-400"></p>
+            </div>
+
+            <!--ule: required, 10 digits, must start with 3 -->
+            <div>
+              <label for="mobile" class="sr-only">Mobile</label>
+              <input id="mobile" name="mobile" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="Mobile (10 digits, starts with 3)" aria-describedby="error-mobile" class="field" />
+              <p data-error-for="mobile" id="error-mobile" role="alert" class="mt-1 text-xs text-red-400"></p>
+            </div>
+
+            <label class="check"><input type="checkbox" name="news-email" checked /> Email me with news and offers</label>
+          </fieldset>
+
+          <!-- Entrega: los radios y las pestañas son "hermanos" (técnica peer, igual que tu menú) -->
+          <fieldset class="space-y-3">
+            <legend class="sec-title">Delivery</legend>
+
+            <!-- (delivery tabs): -->
+            <div class="grid grid-cols-2 gap-3">
+              <input id="envio" name="entrega" type="radio" value="envio" class="peer/envio sr-only" checked />
+              <input id="retiro" name="entrega" type="radio" value="retiro" class="peer/retiro sr-only" />
+              <label for="envio" class="tab peer-checked/envio:border-orange-500 peer-checked/envio:text-orange-500 peer-focus-visible/envio:outline peer-focus-visible/envio:outline-2 peer-focus-visible/envio:outline-orange-500">Shipping</label>
+              <label for="retiro" class="tab peer-checked/retiro:border-orange-500 peer-checked/retiro:text-orange-500 peer-focus-visible/retiro:outline peer-focus-visible/retiro:outline-2 peer-focus-visible/retiro:outline-orange-500">Pickup</label>
+
+            <!-- Panel Envío (CHANGED: first name, last name, ID number and phone moved to the Contact block above) -->
+            <div class="col-span-2 hidden space-y-3 pt-2 peer-checked/envio:block">
+              <div class="space-y-3">
+                <label for="pais" class="sr-only">Country / Region</label>
+                <select id="pais" name="pais" class="field"><option>Colombia</option></select>
+
+                <!-- (validation): the address and the city are now REQUIRED (only for Shipping; this whole panel is hidden for Pickup).
+                     name "direccion" -> "address" so it matches the rule in checkout-validation.js -->
+                <div>
+                  <label for="address" class="sr-only">Address</label>
+                  <input id="address" name="address" type="text" autocomplete="street-address" placeholder="Address" aria-describedby="error-address" class="field" />
+                  <p data-error-for="address" id="error-address" role="alert" class="mt-1 text-xs text-red-400"></p>
+                </div>
+                <input name="complemento" type="text" placeholder="Apartment, suite, etc. (optional)" aria-label="Address line 2" class="field" />
+
+                <div class="grid gap-3 sm:grid-cols-3">
+                  <div>
+                    <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="City" aria-label="City" aria-describedby="error-city" class="field" />
+                    <p data-error-for="city" id="error-city" role="alert" class="mt-1 text-xs text-red-400"></p>
+                  </div>
+                  <select name="departamento" aria-label="State / Province" class="field">
+                    <option>Antioquia</option><option>Bogotá D.C.</option><option>Valle del Cauca</option><option>Atlántico</option><option>Cundinamarca</option>
+                  </select>
+                  <input name="postal" type="text" inputmode="numeric" placeholder="Postal code" aria-label="Postal code (optional)" class="field" />
+                </div>
+              </div>
+
+              <label class="check"><input type="checkbox" name="guardar" /> Save my information for next time</label>
+              <label class="check"><input type="checkbox" name="news-sms" /> Text me with news and offers</label>
+
+              <div class="pt-4">
+                <h3 class="mb-3 text-sm text-white">Shipping methods</h3>
+                <div class="flex items-center justify-between rounded-md border border-orange-500 bg-orange-500/10 px-4 py-4 text-sm text-white">
+                  <span>Free shipping</span><span class="text-orange-500">FREE</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel Retiro -->
+            <p class="col-span-2 hidden rounded-md border border-neutral-800 bg-neutral-900 p-4 text-sm text-neutral-400 peer-checked/retiro:block">
+              Pickup points will be available soon.
+            </p>
+            </div>
+          </fieldset>
+
+          <!-- Pago -->
+          <fieldset>
+            <legend class="sec-title">Payment</legend>
+            <p class="mb-4 -mt-2 text-xs text-neutral-500">All transactions are secure and encrypted.</p>
+
+            <!--  (payment method)  -->
+            <div class="overflow-hidden rounded-md border border-neutral-800 bg-neutral-900">
+              <input id="pago-tarjeta" name="pago" type="radio" value="tarjeta" class="peer/card sr-only" checked />
+              <input id="pago-pse" name="pago" type="radio" value="pse" class="peer/pse sr-only" />
+              <input id="pago-addi" name="pago" type="radio" value="addi" class="peer/addi sr-only" />
+
+              <!-- Tarjeta validation: the card fields are REQUIRED only while "Credit card" is selected; number and expiry are formatted while typing) -->
+              <label for="pago-tarjeta" class="opt peer-focus-visible/card:outline peer-focus-visible/card:outline-2 peer-focus-visible/card:-outline-offset-2 peer-focus-visible/card:outline-orange-500 text-neutral-400 peer-checked/card:text-white peer-checked/card:before:border-orange-500 peer-checked/card:before:bg-orange-500">Credit card</label>
+              <div class="hidden space-y-3 bg-neutral-950 p-4 peer-checked/card:block">
+                <div>
+                  <input id="cc-number" name="cc-number" type="text" inputmode="numeric" maxlength="23" autocomplete="cc-number" placeholder="Card number" aria-label="Card number" aria-describedby="error-cc-number" class="field" />
+                  <p data-error-for="cc-number" id="error-cc-number" role="alert" class="mt-1 text-xs text-red-400"></p>
+                </div>
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <div>
+                    <input id="cc-exp" name="cc-exp" type="text" inputmode="numeric" maxlength="7" autocomplete="cc-exp" placeholder="Expiry date (MM / YY)" aria-label="Expiry date" aria-describedby="error-cc-exp" class="field" />
+                    <p data-error-for="cc-exp" id="error-cc-exp" role="alert" class="mt-1 text-xs text-red-400"></p>
+                  </div>
+                  <div>
+                    <input id="cc-csc" name="cc-csc" type="text" inputmode="numeric" maxlength="4" autocomplete="cc-csc" placeholder="Security code" aria-label="Security code" aria-describedby="error-cc-csc" class="field" />
+                    <p data-error-for="cc-csc" id="error-cc-csc" role="alert" class="mt-1 text-xs text-red-400"></p>
+                  </div>
+                </div>
+                <div>
+                  <input id="cc-name" name="cc-name" type="text" autocomplete="cc-name" placeholder="Name on card" aria-label="Name on card" aria-describedby="error-cc-name" class="field" />
+                  <p data-error-for="cc-name" id="error-cc-name" role="alert" class="mt-1 text-xs text-red-400"></p>
+                </div>
+                <div class="grid gap-3 sm:grid-cols-[1fr_2fr]">
+                  <select name="doc-tipo" aria-label="Document type" class="field"><option>C.C.</option><option>C.E.</option><option>NIT</option><option>Pasaporte</option></select>
+                  <div>
+                    <input id="doc-num" name="doc-num" type="text" inputmode="numeric" maxlength="10" placeholder="Cardholder document number" aria-label="Cardholder document number" aria-describedby="error-doc-num" class="field" />
+                    <p data-error-for="doc-num" id="error-doc-num" role="alert" class="mt-1 text-xs text-red-400"></p>
+                  </div>
+                </div>
+                <select name="cuotas" aria-label="Installments" class="field"><option value="1">1 installment</option><option value="3">3 installments</option><option value="6">6 installments</option><option value="12">12 installments</option></select>
+                <p class="text-xs text-neutral-500">If there is interest, your bank will apply and charge it.</p>
+                <label class="check"><input type="checkbox" name="misma-direccion" checked /> Use shipping address as billing address</label>
+              </div>
+
+              <!-- PSE -->
+              <label for="pago-pse" class="opt border-t border-neutral-800 peer-focus-visible/pse:outline peer-focus-visible/pse:outline-2 peer-focus-visible/pse:-outline-offset-2 peer-focus-visible/pse:outline-orange-500 text-neutral-400 peer-checked/pse:text-white peer-checked/pse:before:border-orange-500 peer-checked/pse:before:bg-orange-500">PSE</label>
+              <p class="hidden bg-neutral-950 p-4 text-xs text-neutral-500 peer-checked/pse:block">You will be redirected to your bank when you finish your purchase.</p>
+
+              <!-- ADDI -->
+              <label for="pago-addi" class="opt border-t border-neutral-800 peer-focus-visible/addi:outline peer-focus-visible/addi:outline-2 peer-focus-visible/addi:-outline-offset-2 peer-focus-visible/addi:outline-orange-500 text-neutral-400 peer-checked/addi:text-white peer-checked/addi:before:border-orange-500 peer-checked/addi:before:bg-orange-500">Pay with ADDI</label>
+              <p class="hidden bg-neutral-950 p-4 text-xs text-neutral-500 peer-checked/addi:block">You will be redirected to ADDI to approve your credit.</p>
+            </div>
+          </fieldset>
+
+          <!-- (validation). Rule: the purchase policies MUST be accepted.
+               -->
+          <div>
+            <label class="check items-start">
+              <input id="policies" type="checkbox" name="policies" aria-describedby="error-policies" class="mt-0.5" />
+              <span>I have read and accept the <a href="#" class="text-orange-500 underline underline-offset-4 hover:text-orange-400">purchase policies</a> (terms &amp; policies).</span>
+            </label>
+            <p data-error-for="policies" id="error-policies" role="alert" class="mt-1 text-xs text-red-400"></p>
+          </div>
+
+          <p data-checkout-status role="status" aria-live="polite" class="text-sm text-orange-500"></p>
+
+          <button type="submit" class="w-full rounded-md bg-orange-500 py-4 text-sm font-medium uppercase tracking-[0.2em] text-black transition-colors hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+            Pay now
+          </button>
+        </form>
+      </section>
+
+      
+      <aside class="order-first border-b border-neutral-800 bg-neutral-900/40 px-4 py-10 md:px-8 lg:order-none lg:border-b-0 lg:border-l lg:pl-12" aria-label="Order summary">
+        <div class="mx-auto max-w-md">
+          <h2 class="sec-title">Order summary</h2>
+          <p data-cart="summary-empty" class="text-sm text-neutral-500">Your cart is empty. <a href="../index.html#collections" class="text-orange-500 underline underline-offset-4">Back to the store</a></p>
+          <ul data-cart="summary-items" class="space-y-4"></ul>
+          <dl data-cart="summary-totals" hidden class="mt-8 space-y-3 border-t border-neutral-800 pt-6 text-sm">
+            <div class="flex justify-between text-neutral-400"><dt>Subtotal</dt><dd data-cart="subtotal">$0</dd></div>
+            <div class="flex justify-between text-neutral-400"><dt>Shipping</dt><dd>FREE</dd></div>
+            <div class="flex items-baseline justify-between border-t border-neutral-800 pt-4 text-white"><dt class="text-lg">Total</dt><dd><span class="mr-2 text-xs text-neutral-500">COP</span><span data-cart="total" class="text-xl">$0</span></dd></div>
+          </dl>
+        </div>
+      </aside>
+      <template data-cart="summary-item-template">
+        <li class="flex items-center gap-4">
+          <div class="relative h-16 w-16 shrink-0 border border-neutral-800 bg-neutral-900">
+            <img data-field="img" alt="" class="h-full w-full object-cover" />
+            <span data-field="qty" class="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 text-[10px] font-bold text-black"></span>
+          </div>
+          <div class="flex-1 text-sm"><p data-field="name" class="text-white"></p><p data-field="size" class="text-xs text-neutral-500"></p></div>
+          <p data-field="line-total" class="text-sm text-white"></p>
+        </li>
+      </template>
+    </div>
+  </main>
+
+  <!-- FOOTER (Juanjo) — -->
+  <footer class="border-t border-neutral-800 bg-neutral-950 px-4 pb-8 pt-16 md:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="/index.html" class="font-['UnifrakturCook'] text-3xl text-white">Tailwear</a>
+          <p class="max-w-xs text-sm leading-relaxed text-neutral-400">Clothing with character.</p>
+          <ul class="mt-6 flex gap-3" aria-label="Social media">
+            <li><a href="https://www.facebook.com" aria-label="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg></a></li>
+            <li><a href="https://www.instagram.com" aria-label="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg></a></li>
+            <li><a href="https://www.youtube.com" aria-label="YouTube" class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg></a></li>
+            </ul>
+        </div>
+        <nav aria-label="Shop">
+          <h2 class="text-xs font-black uppercase tracking-[0.2em] text-white">Shop</h2>
+          <ul class="mt-4 space-y-3 text-sm text-neutral-400"><li><a href="#collections" class="transition-colors hover:text-orange-500">New arrivals</a></li><li><a href="#collections" class="transition-colors hover:text-orange-500">Hoodies</a></li><li><a href="#collections" class="transition-colors hover:text-orange-500">T-shirts</a></li><li><a href="#collections" class="transition-colors hover:text-orange-500">Collections</a></li></ul>
+        </nav>
+        <nav aria-label="Help">
+          <h2 class="text-xs font-black uppercase tracking-[0.2em] text-white">Help</h2>
+          <ul class="mt-4 space-y-3 text-sm text-neutral-400"><li><a href="#" class="transition-colors hover:text-orange-500">Shipping</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Returns</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Size guide</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Contact</a></li></ul>
+        </nav>
+        <nav aria-label="People">
+          <h2 class="text-xs font-black uppercase tracking-[0.2em]text-white">The Creators</h2>
+          <ul class="mt-4 space-y-3 text-sm text-neutral-400"><li><a>Alejandro Gaviria</a></li><li><a>Juan Jose Medina</a></li><li><a>Santiago Rua</a></li><li><a>Juan Jose Arboleda</a></li></ul>
+        </nav>
+      </div>
+      <div class="mt-16 flex flex-col gap-4 border-t border-neutral-800 pt-6 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; 2026 Tailwear. All rights reserved.</p>
+        <ul class="flex gap-6"><li><a href="#" class="transition-colors hover:text-orange-500">Privacy</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Terms</a></li></ul>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="/cart.js"></script>
+ 
+  <script src="/Checkout validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collections & Wardrobe System // Tailwear</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!--<link href="../src/output.css" rel="stylesheet">-->
+</head>
+  <body class="bg-neutral-950 font-['JetBrains_Mono'] text-neutral-200 has-[#menu-toggle:checked]:overflow-hidden">
+
+  <input id="menu-toggle" type="checkbox" class="peer sr-only" aria-label="Abrir o cerrar el menú" />
+
+    <header class="fixed inset-x-0 top-0 z-40 bg-gradient-to-b from-black/70 to-transparent">
+        <nav class="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 md:px-8"
+        aria-label="Navegación principal" >
+
+        <!--JUANJO LIDER: MENU-->
+      
+        <!-- ============ MENU HAMBURGUESA IZQUIERDA ============ -->
+        <div class="flex items-center gap-4 justify-self-start">
+        
+            <label for="menu-toggle" class="cursor-pointer rounded p-1 text-white hover:text-orange-500" aria-hidden="true">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round">
+                    <path d="M4 7h16M4 12h10M4 17h16" />
+                </svg>
+            </label>
+        
+            <a href="../index.html" class="font-['UnifrakturCook'] text-3xl leading-none text-white hover:text-orange-500 transition-colors">Tailwear</a>
+        </div>
+                
+        <!-- <ul class="hidden items-center gap-10 text-xs uppercase tracking-[0.2em] md:flex">
+            <li><a href="../index.html" class="transition-colors hover:text-orange-500">Home</a></li>
+            <li><a href="star_product.html" class="transition-colors hover:text-orange-500">Star product</a></li>
+            <li><a href="collections.html" class="transition-colors hover:text-orange-500">Collections</a></li>
+            <li><a href="about_us.html" class="transition-colors hover:text-orange-500">About</a></li>
+            <li><a href="size_guide.html" class="transition-colors hover:text-orange-500">Size guide</a></li>
+            <li><a href="contact_us.html" class="transition-colors hover:text-orange-500">Contact</a></li>
+        </ul> -->
+
+
+        <!-- ============ CARRITO ============ -->
+        <!--carrito-->
+        <div class="col-start-3 justify-self-end">
+        <button type="button" data-cart-open aria-label="Open cart, 0 items"
+          class="relative flex h-11 w-11 items-center justify-center rounded text-white transition-colors hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-500 sm:h-12 sm:w-12">
+          <svg class="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 8h12l-1 12H7L6 8Z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span data-cart="badge" data-empty="true" aria-hidden="true"
+            class="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-orange-500 px-1 text-[10px] font-bold leading-none text-black data-[empty=true]:hidden">0</span>
+        </button>
+      </div>
+        </nav>
+    </header>
+
+    <!-- ============ CARRITO ============ -->
+    
+    <label for="menu-toggle"
+        class="pointer-events-none fixed inset-0 z-50 bg-black/60 opacity-0 transition-opacity duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100"
+        aria-hidden="true">
+    </label>
+
+    <!-- ============ PANEL LATERAL ============ -->
+    <aside class="invisible fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85%] -translate-x-full flex-col overflow-y-auto border-r border-neutral-800 bg-neutral-950 px-6 py-5 transition-[transform,visibility] duration-300 peer-checked:visible peer-checked:translate-x-0" aria-label="Side menu">
+    <div class="flex items-center justify-between pb-6">
+      <span class="font-['UN'] text-3xl text-white">Tailwear</span>
+      <label for="menu-toggle" class="flex h-11 w-11 cursor-pointer items-center justify-center rounded text-white transition-colors hover:text-orange-500" aria-hidden="true">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </label>
+    </div>
+
+    <ul class="flex flex-col border-t border-neutral-800 text-xs uppercase tracking-[0.2em]">
+      <li><a href="/index.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500 text-orange-500" aria-current="page">Home</a></li>
+      <li><a href="/pages/star_product.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Tribal Reflective Jacket</a></li>
+      <li><a href="/pages/collections.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Collections</a></li>
+      <li><a href="/pages/size_guide.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Size Guide</a></li>
+      <li><a href="/pages/about_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">About Us</a></li>
+      <li><a href="/pages/contact_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Contact Us</a></li>
+      <li><a href="/pages/checkout.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Checkout</a></li>
+    </ul>
+  </aside>
+    
+    
+    <main>
+    <!-- === INICIO SECCIÓN HERO COLECCIÓN CON CARRUSEL === -->
+    <section id="inicio"
+        class="relative flex min-h-screen items-center bg-gradient-to-b from-neutral-900 via-neutral-950 to-neutral-950 px-4 pt-16 md:px-8 overflow-hidden">
+    
+        <!-- === Capa de Fondo Carrusel === -->
+        <div class="pointer-events-none absolute inset-0 z-0 select-none opacity-35">
+            <div class="mx-auto max-w-7xl h-full w-full relative overflow-hidden">
+    
+                <!-- Imagen 1 (Slide 1: Camiseta) -->
+                <img src="/src/images/tee-bone.jpg" alt="Ropa Tailwear de fondo"
+                    class="slide-bg-1 absolute -left-12 top-[10%] h-[60%] w-auto max-w-none origin-top-left -rotate-6 object-cover opacity-50 blur-[2px]" />
+    
+                <!-- Imagen 2 (Slide 2: Cargo) -->
+                <img src="/src/images/cargo-ash-CgXTOx8i.jpg" alt="Ropa Tailwear de fondo"
+                    class="slide-bg-3 absolute -right-20 -top-10 h-[50%] w-auto max-w-none origin-top-right rotate-12 object-cover opacity-60" />
+    
+                <!-- Imagen 3: EFECTO ZOOM TRIBAL (Chaqueta - Tamaño controlado y fijo) -->
+                <img src="/src/images/bomber-DnwLoqc0.jpg" alt="Detalle Tribal Tailwear"
+                    class="slide-bg-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-70 blur-[1px]"
+                    style="width: 500px; height: 500px; transform-origin: 65% 35%; transform: scale(1.6); max-width: none;" />
+    
+            </div>
+        </div>
+        <!-- === Fin Capa de Fondo === -->
+
+        <!-- Degradado oscuro para asegurar legibilidad del texto -->
+        <div class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-neutral-950/90 via-neutral-950/40 to-transparent"></div>
+    
+        <!-- === Contenido de Texto (Delante de las imágenes) === -->
+        <div class="relative z-10 mx-auto w-full max-w-7xl">
+            <h1 class="font-['UnifrakturCook'] text-6xl text-white md:text-7xl lg:text-9xl">Collection</h1>
+            <p class="max-w-md text-sm leading-relaxed text-neutral-400">Our catalog</p>
+        </div>
+    
+    </section>
+    <!-- === FIN SECCIÓN HERO COLECCIÓN === -->
+</main>
+    
+    
+    <!--JUANJO LIDER: MENU-->
+
+    <!--SANTIAGO RUA: COLLECTIONS-->
+    
+    <section class="max-w-7xl mx-auto px-4 py-8 bg-neutral-950">
+        <section id="collections" class="max-w-7xl mx-auto px-4 py-12 bg-neutral-950 text-white">
+            <!-- ENCABEZADO DE LA SECCIÓN  -->
+            <div
+                class="flex flex-col md:flex-row md:items-end justify-between pb-6 mb-8 border-b border-neutral-800/80 gap-6">
+                <!-- Lado Izquierdo: Contador y Título estilizado -->
+                <div class="space-y-1">
+                    <span class="text-[11px] font-mono tracking-widest text-orange-500 uppercase">
+                        [ 06 PIECES ]
+                    </span>
+                    <h2 class="text-3xl md:text-4xl tracking-tight font-bold flex items-center gap-2">
+                        <span class="font-['UnifrakturCook'] font-normal text-neutral-100"> The Collection</span>
+                    </h2>
+                </div>
+                <!-- Lado Derecho: Filtros / Navegación por Categorías -->
+                <div class="flex flex-wrap gap-2 text-[11px] font-mono tracking-widest uppercase">
+                    <!-- ALL -->
+                    <label class="cursor-pointer">
+                        <input type="radio" name="collection-filter" class="peer sr-only" checked />
+                        <div
+                            class="px-5 py-2 rounded-full border border-neutral-800 bg-transparent text-neutral-400 hover:border-neutral-500 hover:text-white peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold peer-checked:hover:text-black transition-colors">
+                            ALL
+                        </div>
+                    </label>
+                    <!-- JACKETS -->
+                    <label class="cursor-pointer">
+                        <input type="radio" name="collection-filter" class="peer sr-only" />
+                        <div
+                            class="px-5 py-2 rounded-full border border-neutral-800 bg-transparent text-neutral-400 hover:border-neutral-500 hover:text-white peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold peer-checked:hover:text-black transition-colors">
+                            JACKETS
+                        </div>
+                    </label>
+                    <!-- TEES -->
+                    <label class="cursor-pointer">
+                        <input type="radio" name="collection-filter" class="peer sr-only" />
+                        <div
+                            class="px-5 py-2 rounded-full border border-neutral-800 bg-transparent text-neutral-400 hover:border-neutral-500 hover:text-white peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold peer-checked:hover:text-black transition-colors">
+                            TEES
+                        </div>
+                    </label>
+                    <!-- CARGOS -->
+                    <label class="cursor-pointer">
+                        <input type="radio" name="collection-filter" class="peer sr-only" />
+                        <div
+                            class="px-5 py-2 rounded-full border border-neutral-800 bg-transparent text-neutral-400 hover:border-neutral-500 hover:text-white peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold peer-checked:hover:text-black transition-colors">
+                            CARGO
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- Tarjeta 1 -->
+                <article class="bg-neutral-950 text-white flex flex-col group">
+                    <!-- 1. Contenedor de la Imagen-->
+                    <div
+                        class="relative w-full aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+                        <span
+                            class="absolute top-3 left-3 z-10 bg-orange-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-sm uppercase">
+                            T-shirts
+                        </span>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="../src/images/tee-bone.jpg" alt="Bone Emblem Oversized Tee">                        
+                    </div>
+                    <!-- 2. Contenido inferior de la tarjeta -->
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-sm font-bold text-white tracking-wide">Bone Emblem Oversized Tee</h3>
+                            <span class="text-sm font-bold text-white">$55.000</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4">Bone / Black</p>
+                        <!-- 3. Selector de Tallas -->
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+                            <div class="grid grid-cols-6 gap-2 max-w-xs">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XS
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        S
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        M
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" checked />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        L
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XL
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XXL
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- 4. Botón inferior "ADD TO CART" -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add
+                                to Cart</button>
+                            <a href="/pages/size_guide.html"
+                                class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+                                View Specs
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Tarjeta 2 -->
+                <article class="bg-neutral-950 text-white flex flex-col group">
+                    <!-- 1. Contenedor de la Imagen-->
+                    <div
+                        class="relative w-full aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+                        <span
+                            class="absolute top-3 left-3 z-10 bg-orange-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-sm uppercase">
+                            Jacket
+                        </span>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="../src/images/bomber-DnwLoqc0.jpg" alt="Chrome Sigil Bomber">
+                    </div>
+                    <!-- 2. Contenido inferior de la tarjeta -->
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-sm font-bold text-white tracking-wide">Chrome Sigil Bomber</h3>
+                            <span class="text-sm font-bold text-white">$240.000</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4">Jet / Chrome</p>
+    
+                        <!-- 3. Selector de Tallas -->
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+                            <div class="grid grid-cols-6 gap-2 max-w-xs">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XS
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        S
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        M
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" checked />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        L
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XL
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XXL
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- 4. Botón inferior "ADD TO CART" -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add
+                                to Cart</button>
+                            <a href="/pages/size_guide.html"
+                                class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+                                View Specs
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Tarjeta 3 -->
+                <article class="bg-neutral-950 text-white flex flex-col group">
+                    <!-- 1. Contenedor de la Imagen -->
+                    <div
+                        class="relative w-full aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+                        <span
+                            class="absolute top-3 left-3 z-10 bg-orange-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-sm uppercase">
+                            Cargo
+                        </span>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="../src/images/cargo-black-zKZRUIy0.jpg" alt="Bone Emblem Oversized Tee">
+                    </div>
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-sm font-bold text-white tracking-wide">Strapline Utility Cargo</h3>
+                            <span class="text-sm font-bold text-white">$148.000</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4"> Black</p>
+                        <!-- 3. Selector de Tallas -->
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+                            <div class="grid grid-cols-6 gap-2 max-w-xs">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        28
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        30
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        32
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" checked />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        34
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        36
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        38
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- 4. Botón inferior "ADD TO CART" -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add
+                                to Cart</button>
+                            <a href="/pages/size_guide.html"
+                                class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+                                View Specs
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Tarjeta 4 -->
+                <article class="bg-neutral-950 text-white flex flex-col group">
+                    <!-- 1. Contenedor de la Imagen -->
+                    <div
+                        class="relative w-full aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+                        <span
+                            class="absolute top-3 left-3 z-10 bg-orange-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-sm uppercase">
+                            Cargo
+                        </span>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="../src/images/cargo-ash-CgXTOx8i.jpg" alt="Bone Emblem Oversized Tee">
+                    </div>
+                    <!-- 2. Contenido inferior de la tarjeta -->
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-sm font-bold text-white tracking-wide">Ash Parachute Cargo</h3>
+                            <span class="text-sm font-bold text-white">$138.000</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4">Ash grey</p>
+                        <!-- 3. Selector de Tallas -->
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+                            <div class="grid grid-cols-6 gap-2 max-w-xs">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        28
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        30
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        32
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" checked />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        34
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        36
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        38
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- 4. Botón inferior "ADD TO CART" -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add
+                                to Cart</button>
+                            <a href="/pages/size_guide.html"
+                                class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+                                View Specs
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Tarjeta 5 -->
+                <article class="bg-neutral-950 text-white flex flex-col group">
+                    <!-- 1. Contenedor de la Imagen  -->
+                    <div
+                        class="relative w-full aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+                        <span
+                            class="absolute top-3 left-3 z-10 bg-orange-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-sm uppercase">
+                            T-shirts
+                        </span>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="../src/images/tee-washed-B7IXqEwB.jpg" alt="Bone Emblem Oversized Tee">
+                    </div>
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-sm font-bold text-white tracking-wide">Thornback Washed Tee</h3>
+                            <span class="text-sm font-bold text-white">$72.000</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4">Acid charcoal</p>
+                        <!-- 3. Selector de Tallas -->
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+                            <div class="grid grid-cols-6 gap-2 max-w-xs">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XS
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        S
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        M
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" checked />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        L
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XL
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XXL
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- 4. Botón inferior "ADD TO CART" -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add
+                                to Cart</button>
+                            <a href="/pages/size_guide.html"
+                                class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+                                View Specs
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Tarjeta 6 -->
+                <article class="bg-neutral-950 text-white flex flex-col group">
+                    <!-- 1. Contenedor de la Imagen -->
+                    <div
+                        class="relative w-full aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+                        <span
+                            class="absolute top-3 left-3 z-10 bg-orange-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-sm uppercase">
+                            T-shirts
+                        </span>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="../src/images/tee-black-CTQtPYGF.jpg" alt="Bone Emblem Oversized Tee">
+                    </div>
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-sm font-bold text-white tracking-wide">Blackletter Oversized Tee</h3>
+                            <span class="text-sm font-bold text-white">$68.000</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4">Black / Silver foil</p>
+                        <!-- 3. Selector de Tallas -->
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+                            <div class="grid grid-cols-6 gap-2 max-w-xs">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XS
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        S
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        M
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" checked />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        L
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XL
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XXL
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- 4. Botón inferior "ADD TO CART" -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add
+                                to Cart</button>
+                            <a href="/pages/size_guide.html"
+                                class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+                                View Specs
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Tarjeta 7 -->
+                <article class="bg-neutral-950 text-white flex flex-col group">
+                    <!-- 1. Contenedor de la Imagen -->
+                    <div class="relative w-full aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+                        <span
+                            class="absolute top-3 left-3 z-10 bg-orange-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-sm uppercase">
+                            T-shirts
+                        </span>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="../src/images/Feral Fang Oversized Tee.jpg" alt="Bone Emblem Oversized Tee">
+                    </div>
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-sm font-bold text-white tracking-wide">Feral Fang Oversized Tee</h3>
+                            <span class="text-sm font-bold text-white">$68.000</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4">Feral Fang Oversized Tee</p>
+                        <!-- 3. Selector de Tallas -->
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+                            <div class="grid grid-cols-6 gap-2 max-w-xs">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XS
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        S
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        M
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" checked />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        L
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XL
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        XXL
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- 4. Botón inferior "ADD TO CART" -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add
+                                to Cart</button>
+                            <a href="/pages/size_guide.html"
+                                class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+                                View Specs
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Tarjeta 8 -->
+                <article class="bg-neutral-950 text-white flex flex-col group">
+                    <!-- 1. Contenedor de la Imagen -->
+                    <div class="relative w-full aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+                        <span
+                            class="absolute top-3 left-3 z-10 bg-orange-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-sm uppercase">
+                            Cargo
+                        </span>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="../src/images/Abyss Tech Utility Pant.jpg" alt="Bone Emblem Oversized Tee">
+                    </div>
+                    <!-- 2. Contenido inferior de la tarjeta -->
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-sm font-bold text-white tracking-wide">Abyss Tech Utility Pant</h3>
+                            <span class="text-sm font-bold text-white">$138.000</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4">Dark iron denim / Multi-strap tech & embroidery</p>
+                        <!-- 3. Selector de Tallas -->
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+                            <div class="grid grid-cols-6 gap-2 max-w-xs">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        28
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        30
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        32
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" checked />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        34
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        36
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        38
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- 4. Botón inferior "ADD TO CART" -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add
+                                to Cart</button>
+                            <a href="/pages/size_guide.html"
+                                class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+                                View Specs
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Tarjeta 9 -->
+                <article class="bg-neutral-950 text-white flex flex-col group">
+                    <!-- 1. Contenedor de la Imagen -->
+                    <div class="relative w-full aspect-square bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+                        <span
+                            class="absolute top-3 left-3 z-10 bg-orange-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-sm uppercase">
+                            Cargo
+                        </span>
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="../src/images/Void Sigil Cargo.webp" alt="Bone Emblem Oversized Tee">
+                    </div>
+                    <!-- 2. Contenido inferior de la tarjeta -->
+                    <div class="flex flex-col flex-grow">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-sm font-bold text-white tracking-wide">Void Sigil Cargo</h3>
+                            <span class="text-sm font-bold text-white">$158.000</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4">Acid black / Reinforced utility</p>
+                        <!-- 3. Selector de Tallas -->
+                        <div class="space-y-2">
+                            <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+                            <div class="grid grid-cols-6 gap-2 max-w-xs">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        28
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        30
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        32
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" checked />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        34
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        36
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="size" class="peer sr-only" />
+                                    <div
+                                        class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                                        38
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- 4. Botón inferior "ADD TO CART" -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button
+                                class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add
+                                to Cart</button>
+                            <a href="/pages/size_guide.html"
+                                class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+                                View Specs
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    
+        <!--SANTIAGO RUA: cOLLECTIONS-->
+
+    <!-- FOOTER: JUANJO LIDER  -->
+    
+    <footer class="border-t border-neutral-800 bg-neutral-950 px-4 pb-8 pt-16 md:px-8">
+        <div class="mx-auto max-w-7xl">
+    
+            <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+    
+    
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <a href="#inicio" class="font-['UnifrakturCook'] text-3xl text-white">Tailwear</a>
+                    <p class="max-w-xs text-sm leading-relaxed text-neutral-400">Ropa con carácter. </p>
+    
+                    <ul class="mt-6 flex gap-3" aria-label="Social media">
+                        <li>
+                            <a href="#" aria-label="Facebook"
+                                class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" aria-label="Instagram"
+                                class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" aria-label="YouTube"
+                                class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <nav aria-label="Shop">
+                    <h2 class="text-xs uppercase tracking-[0.2em] text-white">Shop</h2>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#shop" class="transition-colors hover:text-orange-500">New arrivals</a></li>
+                        <li><a href="#shop" class="transition-colors hover:text-orange-500">Hoodies</a></li>
+                        <li><a href="#shop" class="transition-colors hover:text-orange-500">T-shirts</a></li>
+                        <li><a href="#collections" class="transition-colors hover:text-orange-500">Collections</a></li>
+                    </ul>
+                </nav>
+    
+                <nav aria-label="Help">
+                    <h2 class="text-xs uppercase tracking-[0.2em] text-white">Help</h2>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a href="#" class="transition-colors hover:text-orange-500">Shipping</a></li>
+                        <li><a href="#" class="transition-colors hover:text-orange-500">Returns</a></li>
+                        <li><a href="#" class="transition-colors hover:text-orange-500">Size guide</a></li>
+                        <li><a href="#" class="transition-colors hover:text-orange-500">Contact</a></li>
+                    </ul>
+                </nav>
+    
+                <nav aria-label="People">
+                    <h2 class="text-xs uppercase tracking-[0.2em] text-white">The Creators</h2>
+                    <ul class="space-y-3 text-sm text-neutral-400">
+                        <li><a>Alejandro Gaviria</a></li>
+                        <li><a>Juan Jose Medina</a></li>
+                        <li><a>Santiago Rua</a></li>
+                        <li><a>Juan Jose Arboleda</a></li>
+                    </ul>
+                </nav>
+            </div>
+    
+            <div
+                class="mt-16 flex flex-col gap-4 border-t border-neutral-800 pt-6 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+                <p>&copy; 2026 Tailwear. All rights reserved.</p>
+                <ul class="flex gap-6">
+                    <li><a href="#" class="transition-colors hover:text-orange-500">Privacy</a></li>
+                    <li><a href="#" class="transition-colors hover:text-orange-500">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- FOOTER: JUANJO LIDER  -->
+    <script src="/cart.js"></script>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Tailwear</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=UnifrakturCook:wght@700&family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- <link href="./src/output.css" rel="stylesheet"> -->
+</head>
+<body class="bg-neutral-950 font-['JetBrains_Mono'] text-neutral-200 has-[#menu-toggle:checked]:overflow-hidden">
+
+  <input id="menu-toggle" type="checkbox" class="peer sr-only" aria-label="Open or close the menu" />
+
+  <!-- ============ HEADER (menú global) ============ -->
+  <header class="fixed inset-x-0 top-0 z-40 border-b border-neutral-800/80 bg-neutral-950/80 backdrop-blur-md">
+    <nav class="grid h-16 w-full grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 md:px-8" aria-label="Main navigation">
+
+      <div class="flex min-w-0 items-center gap-2 justify-self-start sm:gap-4">
+        <label for="menu-toggle" class="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded text-white transition-colors hover:text-orange-500" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h16" /></svg>
+        </label>
+        <a href="../index.html" class="truncate font-['UnifrakturCook'] text-2xl leading-none text-white sm:text-3xl">Tailwear</a>
+      </div>
+
+      <!-- Icono del carrito: 44px en móvil, 48px desde sm. cart.js rellena la insignia y abre el panel -->
+      <div class="col-start-3 justify-self-end">
+        <button type="button" data-cart-open aria-label="Open cart, 0 items"
+          class="relative flex h-11 w-11 items-center justify-center rounded text-white transition-colors hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-500 sm:h-12 sm:w-12">
+          <svg class="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 8h12l-1 12H7L6 8Z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span data-cart="badge" data-empty="true" aria-hidden="true"
+            class="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-orange-500 px-1 text-[10px] font-bold leading-none text-black data-[empty=true]:hidden">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ SIDEBAR: OVERLAY ============ -->
+  <label for="menu-toggle" class="pointer-events-none fixed inset-0 z-50 bg-black/70 opacity-0 transition-opacity duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100" aria-hidden="true"></label>
+
+  <!-- ============ SIDEBAR: NAVEGACIÓN PRINCIPAL GLOBAL ============ -->
+  <aside class="invisible fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85%] -translate-x-full flex-col overflow-y-auto border-r border-neutral-800 bg-neutral-950 px-6 py-5 transition-[transform,visibility] duration-300 peer-checked:visible peer-checked:translate-x-0" aria-label="Side menu">
+    <div class="flex items-center justify-between pb-6">
+      <span class="font-['UnifrakturCook'] text-3xl text-white">Tailwear</span>
+      <label for="menu-toggle" class="flex h-11 w-11 cursor-pointer items-center justify-center rounded text-white transition-colors hover:text-orange-500" aria-hidden="true">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </label>
+    </div>
+
+    <ul class="flex flex-col border-t border-neutral-800 text-xs uppercase tracking-[0.2em]">
+      <li><a href="../index.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Home</a></li>
+      <li><a href="star_product.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Tribal Reflective Jacket</a></li>
+      <li><a href="collections.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Collections</a></li>
+      <li><a href="size_guide.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Size Guide</a></li>
+      <li><a href="about_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">About Us</a></li>
+      <li><a href="contact_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500 text-orange-500" aria-current="page">Contact Us</a></li>
+      <li><a href="checkout.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Checkout</a></li>
+    </ul>
+  </aside>
+
+  <main class="pt-16">
+
+    <!-- ============ TITLE ============ -->
+    <section class="relative isolate overflow-hidden px-4 pb-12 pt-20 md:px-8">
+      <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.18),transparent_70%)]"></div>
+      <div class="mx-auto max-w-7xl">
+        <span class="text-[11px] font-mono uppercase tracking-widest text-orange-500">[ SUPPORT ]</span>
+        <h1 class="mt-2 font-['UnifrakturCook'] text-5xl text-white md:text-7xl">Contact Us</h1>
+        <p class="mt-4 max-w-xl text-sm leading-relaxed text-neutral-400">Questions about an order, a size or a piece? Write to us and a real person from Tailwear will get back to you.</p>
+      </div>
+    </section>
+
+    <!-- ============ SUPPORT + FORM ============ -->
+    <section class="mx-auto grid max-w-7xl gap-12 px-4 pb-24 md:px-8 lg:grid-cols-2">
+
+      <!-- LEFT: customer support -->
+      <div class="space-y-10">
+        <div>
+          <h2 class="mb-4 text-xs uppercase tracking-[0.2em] text-white">Customer support</h2>
+          <!-- PLACEHOLDERS: change the email, WhatsApp number and hours to the real ones -->
+          <ul class="space-y-3 text-sm">
+            <li class="border border-neutral-800 bg-neutral-900 p-4"><span class="block text-[11px] uppercase tracking-widest text-orange-500">Email</span><a href="mailto:support@tailwear.com" class="text-neutral-200 transition-colors hover:text-orange-500">support@tailwear.com</a></li>
+            <li class="border border-neutral-800 bg-neutral-900 p-4"><span class="block text-[11px] uppercase tracking-widest text-orange-500">WhatsApp</span><a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" class="text-neutral-200 transition-colors hover:text-orange-500">+57 300 000 0000</a></li>
+            <li class="border border-neutral-800 bg-neutral-900 p-4"><span class="block text-[11px] uppercase tracking-widest text-orange-500">Support hours</span><span class="text-neutral-200">Mon – Fri, 9:00 – 18:00 (COT)</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="mb-2 text-xs uppercase tracking-[0.2em] text-white">Quick answers</h2>
+          <!-- <details> opens and closes by itself: no JavaScript needed -->
+          <details class="group border-b border-neutral-800 py-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-sm text-white transition-colors hover:text-orange-500 [&::-webkit-details-marker]:hidden">Shipping<span class="text-xl text-orange-500 transition-transform group-open:rotate-45">+</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-neutral-400">Shipping is free. Send us your order number and we will check the status of your package.</p>
+          </details>
+          <details class="group border-b border-neutral-800 py-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-sm text-white transition-colors hover:text-orange-500 [&::-webkit-details-marker]:hidden">Exchanges &amp; returns<span class="text-xl text-orange-500 transition-transform group-open:rotate-45">+</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-neutral-400">Write to us with your order number and the piece you want to change, and we will guide you step by step.</p>
+          </details>
+          <details class="group border-b border-neutral-800 py-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-sm text-white transition-colors hover:text-orange-500 [&::-webkit-details-marker]:hidden">Sizes<span class="text-xl text-orange-500 transition-transform group-open:rotate-45">+</span></summary>
+            <p class="mt-3 text-sm leading-relaxed text-neutral-400">Pick your size on each product. If you are between two sizes, tell us your height and weight and we will help you choose.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- RIGHT: message form -->
+      <form id="contact-form" class="space-y-5 border border-neutral-800 bg-neutral-900 p-6 md:p-8" aria-label="Contact form">
+        <h2 class="text-xs uppercase tracking-[0.2em] text-white">Send us a message</h2>
+        <div>
+          <label for="name" class="mb-2 block text-[11px] uppercase tracking-widest text-neutral-400">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" class="w-full border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm text-neutral-200 placeholder:text-neutral-500 transition-colors focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" />
+        </div>
+        <div>
+          <label for="email" class="mb-2 block text-[11px] uppercase tracking-widest text-neutral-400">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@email.com" class="w-full border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm text-neutral-200 placeholder:text-neutral-500 transition-colors focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500" />
+        </div>
+        <div>
+          <label for="message" class="mb-2 block text-[11px] uppercase tracking-widest text-neutral-400">Comments</label>
+          <textarea id="message" name="message" rows="6" maxlength="1000" required placeholder="Tell us how we can help..." class="w-full border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm text-neutral-200 placeholder:text-neutral-500 transition-colors focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 resize-y"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-orange-600 py-3 px-6 text-xs font-medium uppercase tracking-[0.15em] text-white transition-colors hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">Send</button>
+        <p id="form-status" role="status" aria-live="polite" class="min-h-5 text-sm text-orange-500"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER (Juanjo) — CHANGED: tagline translated to English -->
+  <footer class="border-t border-neutral-800 bg-neutral-950 px-4 pb-8 pt-16 md:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="/index.html" class="font-['UnifrakturCook'] text-3xl text-white">Tailwear</a>
+          <p class="max-w-xs text-sm leading-relaxed text-neutral-400">Clothing with character.</p>
+          <ul class="mt-6 flex gap-3" aria-label="Social media">
+            <li><a href="#" aria-label="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg></a></li>
+            <li><a href="#" aria-label="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg></a></li>
+            <li><a href="#" aria-label="YouTube" class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg></a></li>
+            </ul>
+        </div>
+        <nav aria-label="Shop">
+          <h2 class="text-xs uppercase tracking-[0.2em] text-white">Shop</h2>
+          <ul class="space-y-3 text-sm text-neutral-400"><li><a href="/pages/collections.html" class="transition-colors hover:text-orange-500">New arrivals</a></li><li><a href="/pages/collections.html" class="transition-colors hover:text-orange-500">Hoodies</a></li><li><a href="/pages/collections.html" class="transition-colors hover:text-orange-500">T-shirts</a></li><li><a href="/pages/collections.html" class="transition-colors hover:text-orange-500">Collections</a></li></ul>
+        </nav>
+        <nav aria-label="Help">
+          <h2 class="text-xs uppercase tracking-[0.2em] text-white">Help</h2>
+          <ul class="space-y-3 text-sm text-neutral-400"><li><a href="#" class="transition-colors hover:text-orange-500">Shipping</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Returns</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Size guide</a></li><li><a href="/Pages/Contact.html" class="transition-colors hover:text-orange-500">Contact</a></li></ul>
+        </nav>
+        <nav aria-label="People">
+          <h2 class="text-xs uppercase tracking-[0.2em] text-white">The Creators</h2>
+          <ul class="space-y-3 text-sm text-neutral-400"><li><a>Alejandro Gaviria</a></li><li><a>Juan Jose Medina</a></li><li><a>Santiago Rua</a></li><li><a>Juan Jose Arboleda</a></li></ul>
+        </nav>
+      </div>
+      <div class="mt-16 flex flex-col gap-4 border-t border-neutral-800 pt-6 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; 2026 Tailwear. All rights reserved.</p>
+        <ul class="flex gap-6"><li><a href="#" class="transition-colors hover:text-orange-500">Privacy</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Terms</a></li></ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ WHATSAPP FLOATING BUTTON ============
+       "fixed" keeps it in the same place of the screen while you scroll, on the whole page.
+       PLACEHOLDER: replace 573000000000 with your number (country code + number, no + or spaces). -->
+  <div class="fixed bottom-6 right-6 z-[45] flex items-center gap-3">
+    <div id="wa-bubble" class="relative hidden max-w-[14rem] border border-neutral-800 bg-neutral-900 px-5 py-4 text-sm leading-snug text-neutral-200 shadow-xl sm:block" style="border-radius:1rem">
+      Hi! I'm online if you need help...
+      <button type="button" id="wa-close" aria-label="Close message" class="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-neutral-700 text-[10px] text-white hover:bg-orange-500">&#10005;</button>
+    </div>
+    <a href="https://wa.me/573000000000?text=Hi%20Tailwear!%20I%20need%20help." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"
+      class="relative flex h-16 w-16 items-center justify-center rounded-full border border-neutral-700 bg-neutral-800 text-white shadow-xl transition-colors hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+      <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+        <g transform="translate(6.6 6.6) scale(0.45)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></g>
+      </svg>
+      <span class="absolute -right-1 -top-1 flex h-6 w-6 animate-pulse items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-black" aria-hidden="true">!</span>
+    </a>
+  </div>
+
+  <script>
+    // Contact form: browser checks required fields and the email format; then we show a confirmation.
+    // TODO: to really SEND the message, connect a service (Formspree, EmailJS) or your backend inside this function.
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      status.textContent = 'Thank you! We will get back to you soon. (Demo: email sending is not connected yet.)';
+      form.reset();
+    });
+    // WhatsApp: close the little message bubble
+    document.getElementById('wa-close').addEventListener('click', () => document.getElementById('wa-bubble').remove());
+  </script>
+  <script src="../cart.js"></script>
+</body>
+</html>

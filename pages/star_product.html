@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwear — TW-001 Tribal Reflective Jacket</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=UnifrakturCook:wght@700&family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+</head>
+
+<body class="bg-neutral-950 font-['JetBrains_Mono'] text-neutral-200 selection:bg-orange-600 selection:text-neutral-950 has-[#menu-toggle:checked]:overflow-hidden">
+
+  <input id="menu-toggle" type="checkbox" class="peer sr-only" aria-label="Open or close the menu" />
+
+  <!-- ============ HEADER (menú global) ============ -->
+  <header class="fixed inset-x-0 top-0 z-40 border-b border-neutral-800/80 bg-neutral-950/80 backdrop-blur-md">
+    <nav class="grid h-16 w-full grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 md:px-8" aria-label="Main navigation">
+
+      <div class="flex min-w-0 items-center gap-2 justify-self-start sm:gap-4">
+        <label for="menu-toggle" class="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded text-white transition-colors hover:text-orange-500" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h16" /></svg>
+        </label>
+        <a href="../index.html" class="truncate font-['UnifrakturCook'] text-2xl leading-none text-white sm:text-3xl">Tailwear</a>
+      </div>
+
+      <!-- Menú superior propio de Tribal Reflective (solo en esta vista) -->
+      <ul class="hidden items-center gap-6 text-xs uppercase tracking-[0.2em] lg:flex xl:gap-10">
+        <li><a href="../index.html" class="transition-colors hover:text-orange-500">Home</a></li>
+        <li><a href="#anatomy" class="transition-colors hover:text-orange-500">Anatomy</a></li>
+        <li><a href="#reflective" class="transition-colors hover:text-orange-500">Reflective</a></li>
+        <li><a href="#specs" class="transition-colors hover:text-orange-500">Specs</a></li>
+        <li><a href="#acquire" class="transition-colors hover:text-orange-500">Acquire</a></li>
+      </ul>
+
+      <!-- Icono del carrito: 44px en móvil, 48px desde sm. cart.js rellena la insignia y abre el panel -->
+      <div class="col-start-3 justify-self-end">
+        <button type="button" data-cart-open aria-label="Open cart, 0 items"
+          class="relative flex h-11 w-11 items-center justify-center rounded text-white transition-colors hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-500 sm:h-12 sm:w-12">
+          <svg class="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 8h12l-1 12H7L6 8Z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span data-cart="badge" data-empty="true" aria-hidden="true"
+            class="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-orange-500 px-1 text-[10px] font-bold leading-none text-black data-[empty=true]:hidden">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ SIDEBAR: OVERLAY ============ -->
+  <label for="menu-toggle" class="pointer-events-none fixed inset-0 z-50 bg-black/70 opacity-0 transition-opacity duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100" aria-hidden="true"></label>
+
+  <!-- ============ SIDEBAR: NAVEGACIÓN PRINCIPAL GLOBAL ============ -->
+  <aside class="invisible fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85%] -translate-x-full flex-col overflow-y-auto border-r border-neutral-800 bg-neutral-950 px-6 py-5 transition-[transform,visibility] duration-300 peer-checked:visible peer-checked:translate-x-0" aria-label="Side menu">
+    <div class="flex items-center justify-between pb-6">
+      <span class="font-['UnifrakturCook'] text-3xl text-white">Tailwear</span>
+      <label for="menu-toggle" class="flex h-11 w-11 cursor-pointer items-center justify-center rounded text-white transition-colors hover:text-orange-500" aria-hidden="true">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </label>
+    </div>
+
+    <ul class="flex flex-col border-t border-neutral-800 text-xs uppercase tracking-[0.2em]">
+      <li><a href="../index.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Home</a></li>
+      <li><a href="star_product.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500 text-orange-500" aria-current="page">Tribal Reflective Jacket</a></li>
+      <li><a href="collections.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Collections</a></li>
+      <li><a href="size_guide.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Size Guide</a></li>
+      <li><a href="about_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">About Us</a></li>
+      <li><a href="contact_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Contact Us</a></li>
+      <li><a href="checkout.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Checkout</a></li>
+    </ul>
+  </aside>
+
+  <!-- SECTION 1: CINEMATIC HERO (FULL-WIDTH MODEL GIF) -->
+  <main id="inicio">
+    <section class="relative isolate flex min-h-screen w-full flex-col justify-between overflow-hidden bg-neutral-950 pt-24 text-neutral-100">
+      
+      <!-- Fondo GIF a ancho completo cubriendo toda la pantalla con sutil oscuridad para legibilidad -->
+      <div class="absolute inset-0 -z-20 h-full w-full overflow-hidden">
+        <img
+          src="../src/images/tailwearmodel.gif"
+          alt="Tailwear Model - TW 001"
+          class="h-full w-full object-cover object-center brightness-75 contrast-110"
+        />
+        <!-- Degradado superpuesto para oscurecer los bordes y fundir con el diseño oscuro -->
+        <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-neutral-950/60"></div>
+      </div>
+
+      <!-- Resplandor superior sutil -->
+      <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-1/2 bg-[radial-gradient(ellipse_at_top,rgba(249,115,22,0.15),transparent_70%)]"></div>
+
+      <!-- Cabecera técnica superior -->
+      <div class="pointer-events-none relative z-20 flex w-full items-start justify-between px-6 md:px-10">
+        <div class="flex flex-col gap-1">
+          <span class="text-[10px] uppercase tracking-[0.25em] text-orange-500">FLAGSHIP RELEASE · 2026</span>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-neutral-300">CLOSED BATCH PRODUCTION</span>
+        </div>
+        <span class="text-right text-[10px] uppercase tracking-[0.25em] text-neutral-300">
+          TW-001 / TRIBAL REFLECTIVE
+        </span>
+      </div>
+
+      <!-- Centro: Título tipográfico imponente integrado sobre el fondo -->
+      <div class="relative flex grow flex-col items-center justify-center px-6 py-8 text-center">
+        <span class="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-orange-500">URBAN ARMOR SYSTEM</span>
+        <h1 class="font-['UnifrakturMaguntia'] text-6xl tracking-wider text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)] sm:text-7xl md:text-8xl lg:text-9xl">
+          Tailwear
+        </h1>
+        <p class="mt-4 max-w-md font-mono text-xs uppercase tracking-[0.2em] text-neutral-300 md:text-sm">
+          Designed to stand out in the asphalt shadows.
+        </p>
+      </div>
+
+      <!-- Barra inferior: CTAs -->
+      <div class="relative z-20 flex w-full flex-col items-start justify-between gap-6 bg-neutral-950/80 px-6 py-6 backdrop-blur-md md:flex-row md:items-end md:px-10">
+        <div class="flex items-center gap-3">
+          <span class="h-px w-8 bg-orange-500"></span>
+          <span class="text-xs uppercase tracking-[0.25em] text-neutral-300">ENGINEERED FOR NOCTURNAL VISIBILITY.</span>
+        </div>
+
+        <div class="flex w-full items-center gap-3 md:w-auto">
+          <a href="#anatomy" class="flex-1 bg-orange-600 px-8 py-4 text-center text-xs font-bold uppercase tracking-[0.25em] text-neutral-950 transition-colors duration-200 hover:bg-orange-500 md:flex-none">
+            Explore Architecture
+          </a>
+          <a href="#acquire" class="flex-1 border border-neutral-700 bg-neutral-950/50 px-8 py-4 text-center text-xs uppercase tracking-[0.25em] text-neutral-200 transition-colors duration-200 hover:border-orange-500 hover:text-orange-500 md:flex-none">
+            Acquire — $240.000
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SECTION 2: ANATOMY & TRIBALS -->
+  <section id="anatomy" class="relative w-full border-t border-neutral-800/80 bg-neutral-950 px-6 py-24 md:px-12 md:py-32">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-16 flex flex-col justify-between gap-4 border-b border-neutral-800/80 pb-8 sm:flex-row sm:items-center">
+        <div class="flex items-center gap-3">
+          <span class="inline-block h-2.5 w-2.5 bg-orange-600"></span>
+          <span class="text-xs uppercase tracking-widest text-orange-500">01 // GRAPHIC ARCHITECTURE</span>
+        </div>
+        <span class="text-xs uppercase tracking-widest text-neutral-500">PATTERN: SYMMETRIC GOTHIC TRIBAL</span>
+      </div>
+
+      <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="group relative overflow-hidden border border-neutral-800 bg-neutral-900 lg:col-span-7">
+          <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,115,22,0.08),transparent_70%)]"></div>
+          <img
+            src="../src/images/macro-tribal-detail.png"
+            alt="Macro Tribal Detail"
+            class="h-auto w-full scale-125 object-cover object-top transition-transform duration-700 group-hover:scale-[1.32]"
+          />
+          <div class="absolute bottom-4 left-4 border border-neutral-800 bg-neutral-950/90 px-3 py-1.5 text-[10px] uppercase tracking-widest text-neutral-400">
+            MACRO VIEW // CHEST & SHOULDER SYMMETRY
+          </div>
+        </div>
+
+        <div class="space-y-8 lg:col-span-5">
+          <div>
+            <span class="text-xs uppercase tracking-[0.25em] text-orange-500">HAND-DRAWN SILHOUETTE</span>
+            <h2 class="mt-2 mb-4 font-['UnifrakturCook'] text-4xl tracking-wide text-white md:text-5xl">
+              Gothic Tribal Armor
+            </h2>
+            <p class="text-sm leading-relaxed text-neutral-400 md:text-base">
+              Sharp, gothic and tribal-inspired strokes run symmetrically across the chest and descend continuously down both sleeves. Each line is engineered to follow the garment's anatomical structure, forming an aggressive visual armor over deep matte black technical nylon.
+            </p>
+          </div>
+
+          <div class="space-y-4 border-t border-neutral-800 pt-6">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-widest text-neutral-200">Pectoral Symmetry</h3>
+                <p class="mt-1 text-xs text-neutral-500">Interwoven motifs across both front panels framing the central zipper.</p>
+              </div>
+              <span class="text-xs text-orange-500">[ A1 ]</span>
+            </div>
+
+            <div class="h-px w-full bg-neutral-800/60"></div>
+
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-widest text-neutral-200">Sleeve Extension</h3>
+                <p class="mt-1 text-xs text-neutral-500">Vertical shoulder-to-cuff graphics maintaining visual impact from any angle.</p>
+              </div>
+              <span class="text-xs text-orange-500">[ A2 ]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: REFLECTIVE EXPERIENCE (LIGHT VS DARK) -->
+  <section id="reflective" class="relative w-full border-t border-neutral-800/80 bg-neutral-950 px-6 py-24 md:px-12 md:py-32">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-16 flex flex-col justify-between gap-4 border-b border-neutral-800/80 pb-8 sm:flex-row sm:items-center">
+        <div class="flex items-center gap-3">
+          <span class="inline-block h-2.5 w-2.5 bg-orange-600"></span>
+          <span class="text-xs uppercase tracking-widest text-orange-500">02 // OPTICAL RESPONSE</span>
+        </div>
+        <span class="text-xs uppercase tracking-widest text-neutral-500">POLYMER: HIGH-INDEX SILVER REFLECTIVE</span>
+      </div>
+
+      <div class="mb-14 max-w-3xl">
+        <h2 class="font-['UnifrakturMaguntia'] text-5xl leading-none text-white sm:text-6xl">
+          Stealth by Day. Signal by Night.
+        </h2>
+        <p class="mt-6 text-sm leading-relaxed text-neutral-400 md:text-base">
+          The silver microsphere reflective pigment responds radically to light exposure. Under ambient daylight, it maintains a subdued metallic tone; under direct nocturnal light beams, it yields a high-contrast silver flash.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <!-- State 1: Ambient Light (Usando la imagen base del producto) -->
+        <div class="flex flex-col border border-neutral-800 bg-neutral-900/40">
+          <div class="relative flex aspect-square items-center justify-center overflow-hidden bg-neutral-950 p-8">
+            <span class="absolute top-4 left-4 z-10 border border-neutral-800 bg-neutral-900 px-3 py-1 text-[10px] uppercase tracking-widest text-neutral-400">
+              MODE 01 // AMBIENT LIGHT
+            </span>
+            <img
+              src="../src/images/engineering.png"
+              alt="TW-001 in ambient light"
+              class="h-full w-full object-contain opacity-80 brightness-75 contrast-110 transition-all duration-500"
+            />
+          </div>
+          <div class="border-t border-neutral-800 p-6">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-neutral-200">Subdued Metallic Finish</h3>
+            <p class="mt-2 text-xs leading-relaxed text-neutral-500">
+              In urban daytime settings or diffused lighting, the tribal prints maintain a restrained steel-grey metallic read integrated into the deep black nylon.
+            </p>
+          </div>
+        </div>
+
+        <!-- State 2: Direct Light Impact (Tribal Focus con reacción reflectiva) -->
+        <div class="flex flex-col border border-neutral-800 bg-neutral-900/40">
+          <div class="relative flex aspect-square items-center justify-center overflow-hidden bg-neutral-950 p-8">
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),transparent_65%)]"></div>
+            <span class="absolute top-4 left-4 z-10 border border-orange-500/40 bg-orange-600/10 px-3 py-1 text-[10px] uppercase tracking-widest text-orange-500">
+              MODE 02 // DIRECT FLASH / HEADLIGHTS
+            </span>
+            <img
+              src="../src/images/tribal_FOCUS.png"
+              alt="Tribal Focus Reflective Reaction"
+              class="h-full w-full object-contain brightness-125 contrast-125 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] transition-all duration-500"
+            />
+          </div>
+          <div class="border-t border-neutral-800 p-6">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-white">Photoluminescent Reaction</h3>
+            <p class="mt-2 text-xs leading-relaxed text-neutral-400">
+              Upon direct impact in darkness, the reflective surface bounces back the light spectrum, outlining every vertex of the tribal layout.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: ENGINEERING & CONSTRUCTION -->
+  <section id="specs" class="relative w-full border-t border-neutral-800/80 bg-neutral-950 px-6 py-24 md:px-12 md:py-32">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-16 flex flex-col justify-between gap-4 border-b border-neutral-800/80 pb-8 sm:flex-row sm:items-center">
+        <div class="flex items-center gap-3">
+          <span class="inline-block h-2.5 w-2.5 bg-orange-600"></span>
+          <span class="text-xs uppercase tracking-widest text-orange-500">03 // HARDWARE & CONSTRUCTION</span>
+        </div>
+        <span class="text-xs uppercase tracking-widest text-neutral-500">BOMBER CHASSIS // HEAVYWEIGHT</span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="flex flex-col justify-between border border-neutral-800 bg-neutral-900/30 p-6 transition-colors hover:border-neutral-700">
+          <span class="text-xs text-orange-500">01 / SHELL</span>
+          <div class="mt-8">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-white">Technical Nylon</h3>
+            <p class="mt-2 text-xs leading-relaxed text-neutral-400">
+              High-density exterior shell resistant to wind and urban friction, featuring a deep matte finish.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-between border border-neutral-800 bg-neutral-900/30 p-6 transition-colors hover:border-neutral-700">
+          <span class="text-xs text-orange-500">02 / CLOSURE</span>
+          <div class="mt-8">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-white">Silver Metal Zipper</h3>
+            <p class="mt-2 text-xs leading-relaxed text-neutral-400">
+              Exposed-tooth central front metal zipper in industrial silver tone with custom heavy-duty puller.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-between border border-neutral-800 bg-neutral-900/30 p-6 transition-colors hover:border-neutral-700">
+          <span class="text-xs text-orange-500">03 / UTILITY</span>
+          <div class="mt-8">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-white">MA-1 Sleeve Pocket</h3>
+            <p class="mt-2 text-xs leading-relaxed text-neutral-400">
+              Tactical utility pocket on the left sleeve equipped with independent metal zip and external compartments.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-between border border-neutral-800 bg-neutral-900/30 p-6 transition-colors hover:border-neutral-700">
+          <span class="text-xs text-orange-500">04 / FIT & RIBBING</span>
+          <div class="mt-8">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-white">Structured Rib Knit</h3>
+            <p class="mt-2 text-xs leading-relaxed text-neutral-400">
+              Collar, cuffs, and hem in heavyweight elastic rib knit to preserve the boxy bomber silhouette.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional pocket details -->
+      <div class="mt-8 grid grid-cols-1 border border-neutral-800 bg-neutral-900/20 md:grid-cols-3">
+        <div class="border-b border-neutral-800 p-6 md:border-r md:border-b-0">
+          <span class="block text-[10px] uppercase tracking-widest text-neutral-500">SIDE POCKETS</span>
+          <span class="mt-1 block text-xs text-neutral-200">Diagonal welt pockets with flap and metal snap closure</span>
+        </div>
+        <div class="border-b border-neutral-800 p-6 md:border-r md:border-b-0">
+          <span class="block text-[10px] uppercase tracking-widest text-neutral-500">INTERIOR</span>
+          <span class="mt-1 block text-xs text-neutral-200">Quilted interior lining for urban thermal insulation</span>
+        </div>
+        <div class="p-6">
+          <span class="block text-[10px] uppercase tracking-widest text-neutral-500">EDITION</span>
+          <span class="mt-1 block text-xs text-orange-500">Numbered batch — No automated restock</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: INFO & ACQUIRE  -->
+  <section id="acquire" class="relative w-full border-t border-neutral-800/80 bg-neutral-950 px-6 py-24 md:px-12 md:py-32">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid grid-cols-1 items-center border border-neutral-800 bg-neutral-900/40 lg:grid-cols-12">
+        
+        <!-- Product Image -->
+        <div class="relative flex items-center justify-center border-b border-neutral-800 bg-neutral-950 p-10 lg:col-span-6 lg:border-r lg:border-b-0 lg:p-16">
+          <div class="pointer-events-none absolute h-80 w-80 rounded-full bg-orange-600/10 blur-3xl"></div>
+          <img
+            src="../src/images/producto_estrella.png"
+            alt="Engineering & Acquire Detail"
+            class="relative z-10 w-full max-w-md object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.9)]"
+          />
+        </div>
+
+        <!-- Configuration & Purchase Panel -->
+        <div class="flex flex-col justify-center space-y-6 p-8 md:p-12 lg:col-span-6">
+          <div class="flex items-center justify-between">
+            <span class="text-xs uppercase tracking-[0.2em] text-orange-500">TW-001 // IN STOCK</span>
+            <span class="border border-neutral-700 px-2.5 py-1 text-[10px] uppercase tracking-widest text-neutral-400">LIMITED RUN</span>
+          </div>
+
+          <div>
+            <h2 class="font-['UnifrakturCook'] text-4xl tracking-wide text-white md:text-5xl">
+              Tribal Reflective Jacket
+            </h2>
+            <p class="mt-3 text-3xl font-bold text-neutral-100">$240.000 </p>
+          </div>
+
+          <p class="text-xs leading-relaxed text-neutral-400 md:text-sm">
+            Heavy technical black nylon bomber jacket featuring silver reflective tribal print across chest and sleeves, central metal zipper, and tactical MA-1 left sleeve pocket.
+          </p>
+
+          <div class="h-px w-full bg-neutral-800"></div>
+
+          <!-- Size Selector -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs uppercase tracking-widest text-neutral-300">Select Size</span>
+              <span class="text-[11px] text-neutral-500">Fit: Boxy / True to Size</span>
+            </div>
+
+            <div class="grid grid-cols-6 gap-2">
+              <label class="cursor-pointer">
+                <input type="radio" name="jacket-size" value="XS" class="peer sr-only" />
+                <div class="border border-neutral-800 bg-neutral-950 py-3 text-center text-xs font-medium text-neutral-400 transition-colors hover:border-orange-500 peer-checked:border-orange-500 peer-checked:bg-orange-600/10 peer-checked:text-orange-500">
+                  XS
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="jacket-size" value="S" class="peer sr-only" />
+                <div class="border border-neutral-800 bg-neutral-950 py-3 text-center text-xs font-medium text-neutral-400 transition-colors hover:border-orange-500 peer-checked:border-orange-500 peer-checked:bg-orange-600/10 peer-checked:text-orange-500">
+                  S
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="jacket-size" value="M" class="peer sr-only" />
+                <div class="border border-neutral-800 bg-neutral-950 py-3 text-center text-xs font-medium text-neutral-400 transition-colors hover:border-orange-500 peer-checked:border-orange-500 peer-checked:bg-orange-600/10 peer-checked:text-orange-500">
+                  M
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="jacket-size" value="L" class="peer sr-only" checked />
+                <div class="border border-neutral-800 bg-neutral-950 py-3 text-center text-xs font-medium text-neutral-400 transition-colors hover:border-orange-500 peer-checked:border-orange-500 peer-checked:bg-orange-600/10 peer-checked:text-orange-500">
+                  L
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="jacket-size" value="XL" class="peer sr-only" />
+                <div class="border border-neutral-800 bg-neutral-950 py-3 text-center text-xs font-medium text-neutral-400 transition-colors hover:border-orange-500 peer-checked:border-orange-500 peer-checked:bg-orange-600/10 peer-checked:text-orange-500">
+                  XL
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="jacket-size" value="XXL" class="peer sr-only" />
+                <div class="border border-neutral-800 bg-neutral-950 py-3 text-center text-xs font-medium text-neutral-400 transition-colors hover:border-orange-500 peer-checked:border-orange-500 peer-checked:bg-orange-600/10 peer-checked:text-orange-500">
+                  XXL
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Purchase Button -->
+          <div class="pt-2">
+            
+            <button class="w-full bg-orange-600 px-8 py-4 text-center text-xs font-bold uppercase tracking-[0.25em] text-neutral-950 transition-colors duration-200 hover:bg-orange-500">Add
+            to Cart</button>
+            
+            <p id="cart-feedback" class="mt-3 hidden text-center text-xs uppercase tracking-widest text-orange-500"></p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 border-t border-neutral-800 pt-4 text-[11px] text-neutral-500">
+            <span>✓ Secure shipping 24–48h</span>
+            <span>✓ Tailwear craft guarantee</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: BRAND CLOSING -->
+  <section class="relative w-full border-t border-neutral-800/80 bg-neutral-950 px-6 py-24 text-center md:px-12 md:py-32">
+    <div class="mx-auto max-w-3xl space-y-6">
+      <span class="text-xs uppercase tracking-[0.3em] text-orange-500">TAILWEAR ARCHIVE // 2026</span>
+      <h2 class="font-['UnifrakturMaguntia'] text-5xl text-white sm:text-6xl md:text-7xl">
+        Not Made to Fit In.
+      </h2>
+      <p class="mx-auto max-w-xl text-xs leading-relaxed text-neutral-400 md:text-sm">
+        Independent textile architecture designed to claim physical presence on the asphalt. Uncompromising closed batch production.
+      </p>
+      <div class="pt-4">
+        <a href="../index.html" class="inline-block border border-neutral-700 px-8 py-4 text-xs uppercase tracking-[0.25em] text-neutral-200 transition-colors hover:border-orange-500 hover:text-orange-500">
+          &larr; Return to Main Collection
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-neutral-800 bg-neutral-950 px-4 pt-16 pb-8 md:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="#inicio" class="font-['UnifrakturCook'] text-3xl text-white">Tailwear</a>
+          <p class="mt-2 max-w-xs text-sm leading-relaxed text-neutral-400">Ropa con carácter.</p>
+        </div>
+
+        <nav aria-label="Navigation">
+          <h2 class="mb-4 text-xs uppercase tracking-[0.2em] text-white">TW-001</h2>
+          <ul class="space-y-3 text-sm text-neutral-400">
+            <li><a href="#inicio" class="transition-colors hover:text-orange-500">Overview</a></li>
+            <li><a href="#anatomy" class="transition-colors hover:text-orange-500">Anatomy</a></li>
+            <li><a href="#reflective" class="transition-colors hover:text-orange-500">Reflective</a></li>
+            <li><a href="#specs" class="transition-colors hover:text-orange-500">Specifications</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Help">
+          <h2 class="mb-4 text-xs uppercase tracking-[0.2em] text-white">Help</h2>
+          <ul class="space-y-3 text-sm text-neutral-400">
+            <li><a href="#" class="transition-colors hover:text-orange-500">Shipping</a></li>
+            <li><a href="#" class="transition-colors hover:text-orange-500">Returns</a></li>
+            <li><a href="#" class="transition-colors hover:text-orange-500">Size guide</a></li>
+            <li><a href="#" class="transition-colors hover:text-orange-500">Contact</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="People">
+          <h2 class="mb-4 text-xs uppercase tracking-[0.2em] text-white">The Creators</h2>
+          <ul class="space-y-3 text-sm text-neutral-400">
+            <li>Alejandro Gaviria</li>
+            <li>Juan Jose Medina</li>
+            <li>Santiago Rua</li>
+            <li>Juan Jose Arboleda</li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="mt-12 flex flex-col gap-4 border-t border-neutral-800 pt-6 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; 2026 Tailwear. All rights reserved.</p>
+        <ul class="flex gap-6">
+          <li><a href="#" class="transition-colors hover:text-orange-500">Privacy</a></li>
+          <li><a href="#" class="transition-colors hover:text-orange-500">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/cart.js"></script>
+
+  <script>
+    const addBtn = document.getElementById('add-to-cart-btn');
+    const feedback = document.getElementById('cart-feedback');
+
+    addBtn.addEventListener('click', () => {
+      const selectedSize = document.querySelector('input[name="jacket-size"]:checked')?.value || 'L';
+      feedback.textContent = `[ TW-001 // SIZE ${selectedSize} ADDED TO BAG ]`;
+      feedback.classList.remove('hidden');
+      addBtn.textContent = 'Added to Bag ✓';
+      setTimeout(() => {
+        addBtn.textContent = 'Add to Bag — $240.000';
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>

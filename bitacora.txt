@@ -1,0 +1,20 @@
+---------notas JUAN JOSE MEDINA -----
+
+
+FEATURED (Destacado): Significa que este producto no es un artículo cualquiera del catálogo general, sino el producto estrella o destacado de la tienda (justo la sección de la que te encargaste). Sirve para captar la atención del cliente apenas entra a la página web y guiarlo directamente hacia lo que la marca quiere vender más o mostrar como novedad principal.
+
+    TH-001 (Código de referencia / SKU): Es un código de identificación único para el producto. En las marcas de ropa, cada prenda lleva una referencia interna. "TH" probablemente sean las iniciales de la marca (Tailwear) y "001" indica que es el primer modelo o artículo registrado de esa serie.
+
+¿Por qué lo ponemos en diseño web?
+
+En términos visuales y de tipografía, este tipo de textos pequeños, en mayúsculas y con espacio entre las letras (tracking):
+
+    Le dan un toque industrial, técnico y moderno muy típico de las marcas de ropa urbana (streetwear o techwear).
+
+    Sirven como una "etiqueta de categoría" que ayuda a que el título principal de abajo (Tribal Reflective Jacket) resalte todavía más y tenga una jerarquía visual clara.
+
+¿Te va quedando claro este concepto? Si ya pudiste probar el código en tu navegador, en la siguiente etapa podemos pasar a crear los bullet points (las características técnicas de la chaqueta) y el selector de tallas. ¡Dime cuando estés listo!
+
+
+
+-----------notas JUAN JOSE MEDINA -----

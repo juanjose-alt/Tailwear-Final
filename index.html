@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwear | Streetwear E-commerce</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <!-- <link href="./src/output.css" rel="stylesheet"> -->
+     <style>
+    /* Carrusel Collections (no depende de recompilar Tailwind) */
+    #collection-track {
+      --cards: 1.6; --gap: 1rem;
+      display: flex; gap: var(--gap);
+      overflow-x: auto; scroll-behavior: smooth;
+      scroll-snap-type: x proximity; overscroll-behavior-x: contain;
+      scrollbar-width: none;
+    }
+    #collection-track::-webkit-scrollbar { display: none; }
+    @media (min-width: 640px)  { #collection-track { --cards: 2.5; } }
+    @media (min-width: 768px)  { #collection-track { --cards: 4; } }
+    @media (min-width: 1024px) { #collection-track { --cards: 5; } }
+    #collection-track .collection-card {
+      flex: 0 0 calc((100% - (var(--cards) - 1) * var(--gap)) / var(--cards));
+      min-width: 0; scroll-snap-align: start;
+    }
+    #collection-track h3 { font-size: .75rem; }
+    #collection-track h3 + span { font-size: .75rem; }
+    #collection-track .collection-card a { padding: .6rem 1rem; }
+    .collection-arrow[aria-disabled="true"] { opacity: .3; cursor: default; }
+  </style>
+</head>
+  <body class="bg-neutral-950 font-['JetBrains_Mono'] text-neutral-200 has-[#menu-toggle:checked]:overflow-hidden">
+
+  <input id="menu-toggle" type="checkbox" class="peer sr-only" aria-label="Open or close the menu" />
+
+  <!-- ============ HEADER (menú global) ============ -->
+  <header class="fixed inset-x-0 top-0 z-40 border-b border-neutral-800/80 bg-neutral-950/80 backdrop-blur-md">
+    <nav class="grid h-16 w-full grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 md:px-8" aria-label="Main navigation">
+
+      <div class="flex min-w-0 items-center gap-2 justify-self-start sm:gap-4">
+        <label for="menu-toggle" class="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded text-white transition-colors hover:text-orange-500" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h16" /></svg>
+        </label>
+        <a href="index.html" class="truncate font-['UnifrakturCook'] text-2xl leading-none text-white sm:text-3xl">Tailwear</a>
+      </div>
+
+      <!-- Icono del carrito: 44px en móvil, 48px desde sm. cart.js rellena la insignia y abre el panel -->
+    <div class="col-start-3 justify-self-end">
+        <button type="button" data-cart-open aria-label="Open cart, 0 items"
+          class="relative flex h-11 w-11 items-center justify-center rounded text-white transition-colors hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-500 sm:h-12 sm:w-12">
+          <svg class="h-6 w-6 sm:h-7 sm:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 8h12l-1 12H7L6 8Z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span data-cart="badge" data-empty="true" aria-hidden="true"
+            class="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-orange-500 px-1 text-[10px] font-bold leading-none text-black data-[empty=true]:hidden">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ SIDEBAR: OVERLAY ============ -->
+  <label for="menu-toggle" class="pointer-events-none fixed inset-0 z-50 bg-black/70 opacity-0 transition-opacity duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100" aria-hidden="true"></label>
+
+  <!-- ============ SIDEBAR: NAVEGACIÓN PRINCIPAL GLOBAL ============ -->
+  <aside class="invisible fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85%] -translate-x-full flex-col overflow-y-auto border-r border-neutral-800 bg-neutral-950 px-6 py-5 transition-[transform,visibility] duration-300 peer-checked:visible peer-checked:translate-x-0" aria-label="Side menu">
+    <div class="flex items-center justify-between pb-6">
+      <span class="font-['UnifrakturCook'] text-3xl text-white">Tailwear</span>
+      <label for="menu-toggle" class="flex h-11 w-11 cursor-pointer items-center justify-center rounded text-white transition-colors hover:text-orange-500" aria-hidden="true">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </label>
+    </div>
+
+    <ul class="flex flex-col border-t border-neutral-800 text-xs uppercase tracking-[0.2em]">
+      <li><a href="/index.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500 text-orange-500" aria-current="page">Home</a></li>
+      <li><a href="/pages/star_product.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Tribal Reflective Jacket</a></li>
+      <li><a href="/pages/collections.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Collections</a></li>
+      <li><a href="/pages/size_guide.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Size Guide</a></li>
+      <li><a href="/pages/about_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">About Us</a></li>
+      <li><a href="/pages/contact_us.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Contact Us</a></li>
+      <li><a href="/pages/checkout.html" class="block border-b border-neutral-800 py-4 transition-colors hover:text-orange-500">Checkout</a></li>
+    </ul>
+  </aside>
+
+<!--JUANJO LIDER: MENU-->
+
+<!--ALEJANDRO: Hero & Lore -->
+
+<main id="inicio">
+  <section class="relative isolate flex min-h-screen w-full flex-col justify-between overflow-hidden bg-neutral-950 px-6 pb-8 pt-24 text-neutral-100 md:px-10">
+
+    <!-- Resplandor azul superior -->
+    <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-2/3 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.18),transparent_70%)]"></div>
+
+    <!-- Fila superior: detalles técnicos de esquinas -->
+    <div class="pointer-events-none relative z-20 flex w-full items-start justify-between">
+      <!-- <div class="flex flex-col gap-1">
+        <span class="text-[10px] uppercase tracking-[0.25em] text-orange-500">EST. 2026</span>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-neutral-400">INDEPENDENT STREETWEAR</span>
+      </div> -->
+      <!-- <span class="text-right text-[10px] uppercase tracking-[0.25em] text-neutral-400">
+        TW-001 / TRIBAL REFLECTIVE
+      </span> -->
+    </div>
+
+    <!-- Centro: título gigante de fondo + chaqueta -->
+    <div class="relative flex grow items-center justify-center py-8">
+
+      <h1
+        class="pointer-events-none absolute inset-0 z-0 flex select-none items-center justify-center whitespace-nowrap text-[21vw] font-normal leading-none text-neutral-300"
+        style="font-family: 'UnifrakturMaguntia', serif;">
+        Tailwear
+      </h1>
+
+      <div class="relative z-10 flex w-64 justify-center transition-transform duration-500 hover:scale-[1.02] sm:w-80 md:w-[26rem] lg:w-[28rem]">
+        <img
+          src="src/images/producto_estrella.png"
+          alt="Tribal Reflective Jacket - TW 001"
+          class="h-auto w-full object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)]"
+        />
+      </div>
+    </div>
+
+    <!-- Barra inferior: manifiesto + CTAs -->
+    <div class="relative z-20 flex w-full flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+
+      <div class="flex items-center gap-3">
+        <span class="h-px w-8 bg-orange-500"></span>
+        <span class="text-xs uppercase tracking-[0.25em] text-neutral-400">DESIGNED TO STAND OUT.</span>
+      </div>
+
+      <div class="flex w-full items-center gap-3 md:w-auto">
+        <a href="/pages/collections.html"
+          class="flex-1 bg-orange-600 px-8 py-4 text-center text-xs font-bold uppercase tracking-[0.25em] text-neutral-950 transition-colors duration-200 hover:bg-orange-500 md:flex-none">
+          Shop Collection
+        </a>
+        <a href="/pages/star_product.html"
+          class="flex-1 border border-neutral-600 px-8 py-4 text-center text-xs uppercase tracking-[0.25em] text-neutral-200 transition-colors duration-200 hover:border-orange-500 hover:text-orange-500 md:flex-none">
+          Discover Tailwear
+        </a>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!--ALEJANDRO: Hero & Lore -->
+
+<!--JUAN MEDINA: PRODUCTO PRINCIPAL-->
+<section class="py-20 px-4 md:px-8 bg-neutral-950 text-neutral-100 border-y border-neutral-800/80">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Rejilla de 2 columnas -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-0 items-center">
+
+      <!-- COLUMNA IZQUIERDA: Imagen de la chaqueta -->
+      <div class="relative w-full flex items-center justify-center p-8 md:p-12 bg-neutral-950 overflow-hidden">
+      <div class="absolute w-80 h-80 bg-orange-600/15 rounded-full blur-3xl pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"></div>
+
+      <img 
+      src="src/images/producto_estrella.png"
+      alt="Tribal Reflective Jacket"
+      class="relative z-10 w-full max-w-md md:max-w-lg object-cover drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]">
+    </div>
+
+      <!-- COLUMNA DERECHA: -->
+      <div class="p-8 md:p-12 flex flex-col space-y-6 justify-center bg-neutral-900 h-full">
+
+        <!-- Categoría pequeña superior -->
+        <span class="text-xs uppercase tracking-[0.2em] text-orange-500">
+          FEATURED · TW-001
+        </span>
+
+        <h2 class="font-['UnifrakturCook'] text-4xl md:text-5xl text-white tracking-wide">
+          Tribal Reflective Jacket
+        </h2>
+
+        <p class="text-2xl font-semibold text-neutral-200">
+          $240.000
+        </p>
+
+        <p class="text-sm md:text-base text-neutral-400 leading-relaxed">
+          Heavy technical nylon bomber with hand-drawn gothic tribal graphics printed in reflective silver. Built to catch light in the dark.
+        </p>
+
+        <!-- LÍNEA DIVISORIA -->
+        <div class="w-full h-[px] bg-neutral-800 my-2"></div>
+
+        <!-- Lista de características -->
+        <ul class="space-y-2.5 text-xs md:text-sm text-neutral-400">
+          <li class="flex items-center gap-3">
+            <span class="h-1 w-1 bg-orange-500 shrink-0"></span>
+            Reflective silver tribal print
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="h-1 w-1 bg-orange-500 shrink-0"></span>
+            Technical nylon shell, quilted lining
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="h-1 w-1 bg-orange-500 shrink-0"></span>
+            Silver metal two-way zipper
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="h-1 w-1 bg-orange-500 shrink-0"></span>
+            Utility sleeve pocket
+          </li>
+        </ul>
+
+        <!-- Selector de tallas -->
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-wider text-neutral-400">Sizes</span>
+          <div class="grid grid-cols-6 gap-2 max-w-xs">
+            
+            <label class="cursor-pointer">
+              <input type="radio" name="size" class="peer sr-only" />
+              <div class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                XS
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input type="radio" name="size" class="peer sr-only" />
+              <div class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                S
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input type="radio" name="size" class="peer sr-only" />
+              <div class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                M
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input type="radio" name="size" class="peer sr-only" checked />
+              <div class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                L
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input type="radio" name="size" class="peer sr-only" />
+              <div class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                XL
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input type="radio" name="size" class="peer sr-only" />
+              <div class="py-2 text-center text-xs font-medium border border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-orange-500 peer-checked:border-orange-500 peer-checked:text-orange-500 transition-colors">
+                XXL
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <button class="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">Add to Cart</button>
+          <a href="pages/star_product.html"
+              class="flex-1 border border-neutral-700 hover:border-orange-500 text-neutral-200 hover:text-orange-500 font-medium py-3 px-6 text-xs uppercase tracking-[0.15em] transition-colors text-center">
+              View Specs
+            </a>
+        </div>
+
+      </div> <!-- FIN COLUMNA DERECHA -->
+
+    </div> <!-- FIN REJILLA -->
+  </div>
+</section>
+
+<!--JUAN MEDINA: PRODUCTO PRINCIPAL-->
+
+
+
+<!--SANTIAGO RUA: COLLECTIONS-->
+
+<<section id="collections" class="mx-auto max-w-7xl bg-neutral-950 px-4 py-12 text-white md:px-8">
+
+  <!-- HEADER: title on the left, arrows on the right (CHANGED: arrows moved here; empty filter box removed) -->
+  <div class="mb-8 flex items-end justify-between gap-4 border-b border-neutral-800/80 pb-6">
+    <div class="space-y-1">
+      <span class="font-mono text-[11px] uppercase tracking-widest text-orange-500">[ 06 PIECES ]</span>
+      <h2 class="flex items-center gap-2 text-3xl font-bold tracking-tight md:text-4xl">
+        <span class="font-sans font-black tracking-tighter text-white">The</span>
+        <span class="font-sans font-black text-neutral-100">Collection</span>
+      </h2>
+    </div>
+    <!-- ADDED: carousel arrows (they disable themselves at the start / end) -->
+    <div class="flex shrink-0 gap-2">
+      <button type="button" id="collection-prev" aria-label="Previous products" class="flex h-10 w-10 items-center justify-center border border-neutral-700 text-white transition-colors hover:border-orange-500 hover:text-orange-500 disabled:pointer-events-none disabled:opacity-30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-500">&#8592;</button>
+      <button type="button" id="collection-next" aria-label="Next products" class="flex h-10 w-10 items-center justify-center border border-neutral-700 text-white transition-colors hover:border-orange-500 hover:text-orange-500 disabled:pointer-events-none disabled:opacity-30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-500">&#8594;</button>
+    </div>
+  </div>
+
+  <!-- CAROUSEL TRACK. CHANGED: layout now uses Tailwind classes only:
+       one row (flex) + horizontal scroll + snap. Card width: mobile 78% (the next card peeks out) / tablet 2 cards / desktop 3 cards.
+       If you have custom CSS for #collection-track or .collection-card, delete it: it can fight with these classes. -->
+  <div id="collection-track" role="region" aria-label="Collection products" tabindex="0"
+    class="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-500">
+
+    <!-- Card 1: Bone Emblem Oversized Tee -->
+    <article class="collection-card group flex w-[78%] shrink-0 snap-start flex-col bg-neutral-950 text-white sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
+      <div class="relative mb-4 aspect-square w-full overflow-hidden border border-neutral-800 bg-neutral-900">
+        <span class="absolute left-3 top-3 z-10 rounded-sm bg-orange-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">T-shirts</span>
+        <!-- CHANGED: alt text now matches the product (before, cards 3-6 said "Bone Emblem Oversized Tee") -->
+        <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="src/images/tee-bone.jpg" alt="Bone Emblem Oversized Tee" loading="lazy" draggable="false">
+      </div>
+      <div class="flex flex-1 flex-col">
+        <!-- CHANGED: min-h-10 + shrink-0 on the price: a 1-line and a 2-line title take the same space, so all cards stay aligned -->
+        <div class="mb-1 flex min-h-10 items-start justify-between gap-3">
+          <h3 class="text-sm font-bold tracking-wide text-white">Bone Emblem Oversized Tee</h3>
+          <span class="shrink-0 whitespace-nowrap text-sm font-bold text-white">$55.000</span>
+        </div>
+        <p class="mb-4 text-xs text-neutral-500">Bone / Black</p>
+        <!-- CHANGED: mt-auto pushes the button to the bottom of the card, so all buttons line up -->
+        <a href="pages/collections.html" class="mt-auto block border border-neutral-700 px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.15em] text-neutral-200 transition-colors hover:border-orange-500 hover:text-orange-500">View Specs</a>
+      </div>
+    </article>
+    <!-- Card 2: Chrome Sigil Bomber -->
+    <article class="collection-card group flex w-[78%] shrink-0 snap-start flex-col bg-neutral-950 text-white sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
+      <div class="relative mb-4 aspect-square w-full overflow-hidden border border-neutral-800 bg-neutral-900">
+        <span class="absolute left-3 top-3 z-10 rounded-sm bg-orange-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">Jacket</span>
+        <!-- CHANGED: alt text now matches the product (before, cards 3-6 said "Bone Emblem Oversized Tee") -->
+        <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="src/images/bomber-DnwLoqc0.jpg" alt="Chrome Sigil Bomber" loading="lazy" draggable="false">
+      </div>
+      <div class="flex flex-1 flex-col">
+        <!-- CHANGED: min-h-10 + shrink-0 on the price: a 1-line and a 2-line title take the same space, so all cards stay aligned -->
+        <div class="mb-1 flex min-h-10 items-start justify-between gap-3">
+          <h3 class="text-sm font-bold tracking-wide text-white">Chrome Sigil Bomber</h3>
+          <span class="shrink-0 whitespace-nowrap text-sm font-bold text-white">$240.000</span>
+        </div>
+        <p class="mb-4 text-xs text-neutral-500">Jet / Chrome</p>
+        <!-- CHANGED: mt-auto pushes the button to the bottom of the card, so all buttons line up -->
+        <a href="/pages/star_product.html" class="mt-auto block border border-neutral-700 px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.15em] text-neutral-200 transition-colors hover:border-orange-500 hover:text-orange-500">View Specs</a>
+      </div>
+    </article>
+    <!-- Card 3: Strapline Utility Cargo -->
+    <article class="collection-card group flex w-[78%] shrink-0 snap-start flex-col bg-neutral-950 text-white sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
+      <div class="relative mb-4 aspect-square w-full overflow-hidden border border-neutral-800 bg-neutral-900">
+        <span class="absolute left-3 top-3 z-10 rounded-sm bg-orange-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">Cargo</span>
+        <!-- CHANGED: alt text now matches the product (before, cards 3-6 said "Bone Emblem Oversized Tee") -->
+        <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="src/images/cargo-black-zKZRUIy0.jpg" alt="Strapline Utility Cargo" loading="lazy" draggable="false">
+      </div>
+      <div class="flex flex-1 flex-col">
+        <!-- CHANGED: min-h-10 + shrink-0 on the price: a 1-line and a 2-line title take the same space, so all cards stay aligned -->
+        <div class="mb-1 flex min-h-10 items-start justify-between gap-3">
+          <h3 class="text-sm font-bold tracking-wide text-white">Strapline Utility Cargo</h3>
+          <span class="shrink-0 whitespace-nowrap text-sm font-bold text-white">$148.000</span>
+        </div>
+        <p class="mb-4 text-xs text-neutral-500">Black</p>
+        <!-- CHANGED: mt-auto pushes the button to the bottom of the card, so all buttons line up -->
+        <a href="/pages/size_guide.html" class="mt-auto block border border-neutral-700 px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.15em] text-neutral-200 transition-colors hover:border-orange-500 hover:text-orange-500">View Specs</a>
+      </div>
+    </article>
+    <!-- Card 4: Ash Parachute Cargo -->
+    <article class="collection-card group flex w-[78%] shrink-0 snap-start flex-col bg-neutral-950 text-white sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
+      <div class="relative mb-4 aspect-square w-full overflow-hidden border border-neutral-800 bg-neutral-900">
+        <span class="absolute left-3 top-3 z-10 rounded-sm bg-orange-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">Cargo</span>
+        <!-- CHANGED: alt text now matches the product (before, cards 3-6 said "Bone Emblem Oversized Tee") -->
+        <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="src/images/cargo-ash-CgXTOx8i.jpg" alt="Ash Parachute Cargo" loading="lazy" draggable="false">
+      </div>
+      <div class="flex flex-1 flex-col">
+        <!-- CHANGED: min-h-10 + shrink-0 on the price: a 1-line and a 2-line title take the same space, so all cards stay aligned -->
+        <div class="mb-1 flex min-h-10 items-start justify-between gap-3">
+          <h3 class="text-sm font-bold tracking-wide text-white">Ash Parachute Cargo</h3>
+          <span class="shrink-0 whitespace-nowrap text-sm font-bold text-white">$138.000</span>
+        </div>
+        <p class="mb-4 text-xs text-neutral-500">Ash grey</p>
+        <!-- CHANGED: mt-auto pushes the button to the bottom of the card, so all buttons line up -->
+        <a href="/pages/size_guide.html" class="mt-auto block border border-neutral-700 px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.15em] text-neutral-200 transition-colors hover:border-orange-500 hover:text-orange-500">View Specs</a>
+      </div>
+    </article>
+    <!-- Card 5: Thornback Washed Tee -->
+    <article class="collection-card group flex w-[78%] shrink-0 snap-start flex-col bg-neutral-950 text-white sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
+      <div class="relative mb-4 aspect-square w-full overflow-hidden border border-neutral-800 bg-neutral-900">
+        <span class="absolute left-3 top-3 z-10 rounded-sm bg-orange-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">T-shirts</span>
+        <!-- CHANGED: alt text now matches the product (before, cards 3-6 said "Bone Emblem Oversized Tee") -->
+        <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="src/images/tee-washed-B7IXqEwB.jpg" alt="Thornback Washed Tee" loading="lazy" draggable="false">
+      </div>
+      <div class="flex flex-1 flex-col">
+        <!-- CHANGED: min-h-10 + shrink-0 on the price: a 1-line and a 2-line title take the same space, so all cards stay aligned -->
+        <div class="mb-1 flex min-h-10 items-start justify-between gap-3">
+          <h3 class="text-sm font-bold tracking-wide text-white">Thornback Washed Tee</h3>
+          <span class="shrink-0 whitespace-nowrap text-sm font-bold text-white">$72.000</span>
+        </div>
+        <p class="mb-4 text-xs text-neutral-500">Acid charcoal</p>
+        <!-- CHANGED: mt-auto pushes the button to the bottom of the card, so all buttons line up -->
+        <a href="/pages/size_guide.html" class="mt-auto block border border-neutral-700 px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.15em] text-neutral-200 transition-colors hover:border-orange-500 hover:text-orange-500">View Specs</a>
+      </div>
+    </article>
+    <!-- Card 6: Blackletter Wolf Tee -->
+    <article class="collection-card group flex w-[78%] shrink-0 snap-start flex-col bg-neutral-950 text-white sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
+      <div class="relative mb-4 aspect-square w-full overflow-hidden border border-neutral-800 bg-neutral-900">
+        <span class="absolute left-3 top-3 z-10 rounded-sm bg-orange-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">T-shirts</span>
+        <!-- CHANGED: alt text now matches the product (before, cards 3-6 said "Bone Emblem Oversized Tee") -->
+        <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="src/images/tee-black-CTQtPYGF.jpg" alt="Blackletter Wolf Tee" loading="lazy" draggable="false">
+      </div>
+      <div class="flex flex-1 flex-col">
+        <!-- CHANGED: min-h-10 + shrink-0 on the price: a 1-line and a 2-line title take the same space, so all cards stay aligned -->
+        <div class="mb-1 flex min-h-10 items-start justify-between gap-3">
+          <h3 class="text-sm font-bold tracking-wide text-white">Blackletter Wolf Tee</h3>
+          <span class="shrink-0 whitespace-nowrap text-sm font-bold text-white">$68.000</span>
+        </div>
+        <p class="mb-4 text-xs text-neutral-500">Black / Silver foil</p>
+        <!-- CHANGED: mt-auto pushes the button to the bottom of the card, so all buttons line up -->
+        <a href="/pages/size_guide.html" class="mt-auto block border border-neutral-700 px-6 py-3 text-center text-xs font-medium uppercase tracking-[0.15em] text-neutral-200 transition-colors hover:border-orange-500 hover:text-orange-500">View Specs</a>
+      </div>
+    </article>
+  </div>
+  <!-- /CAROUSEL -->
+
+  <script>
+    // Arrows: scroll the track by one card (card width + gap). Disable an arrow when there is nothing more to scroll.
+    (() => {
+      const track = document.getElementById('collection-track');
+      const prev = document.getElementById('collection-prev');
+      const next = document.getElementById('collection-next');
+      const step = () => track.querySelector('.collection-card').offsetWidth + (parseFloat(getComputedStyle(track).columnGap) || 16);
+      const update = () => {
+        prev.disabled = track.scrollLeft <= 1;
+        next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+      };
+      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+      next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+  </script>
+</section>
+
+<!--SANTIAGO RUA: COLLECTIONS-->
+
+<!--ALEJANDRO: MANIFEST SECTION-->
+<section id="manifest" class="relative w-full bg-neutral-950 text-neutral-100 border-t border-neutral-800/80 py-24 md:py-32 px-6 md:px-12 overflow-hidden">
+  
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Encabezado técnico superior -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 mb-16 border-b border-neutral-800/80">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 bg-orange-600 inline-block"></span>
+        <span class="font-mono text-xs text-orange-500 tracking-widest uppercase">04 // OPERATIONAL MANIFESTO</span>
+      </div>
+      <span class="font-mono text-xs text-neutral-500 tracking-widest uppercase">DOC-ID: TW-MAN-2026</span>
+    </div>
+
+    <!-- Grid Principal: Declaración Gótica vs. Principios Operativos -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      
+      <!-- Columna Izquierda (5 cols): Título de Impacto y Postura -->
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-8">
+        <div>
+          <h2 class="text-5xl sm:text-6xl md:text-7xl leading-none text-strong-100 font-normal mb-6" style="font-family: 'Inter', sans-serif;">
+            Not made to fit in.
+          </h2>
+          <p class="font-mono text-xs text-neutral-400 uppercase tracking-widest leading-relaxed">
+            URBAN ARMOR & PORTABLE HABITAT SYSTEM // BUILT FOR ASPHALT FRICTION.
+          </p>
+        </div>
+
+        <!-- Caja de Especificación de Filosofía (Acento Industrial) -->
+        <div class="border border-neutral-800 bg-neutral-900/40 p-6 space-y-3">
+          <div class="flex items-center justify-between font-mono text-[11px] text-neutral-400">
+            <span>PRODUCTION MODEL</span>
+            <span class="text-orange-500">CLOSED BATCHES</span>
+          </div>
+          <div class="w-full h-[1px] bg-neutral-800"></div>
+          <div class="flex items-center justify-between font-mono text-[11px] text-neutral-400">
+            <span>MATERIAL TRUTH</span>
+            <span class="text-neutral-200">300G–400G/M² HEAVYWEIGHT</span>
+          </div>
+          <div class="w-full h-[1px] bg-neutral-800"></div>
+          <div class="flex items-center justify-between font-mono text-[11px] text-neutral-400">
+            <span>NIGHT VISIBILITY</span>
+            <span class="text-sky-500">TRIBAL REFLECTIVE POLYMER</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha (7 cols): Cuerpo del Manifiesto -->
+      <div class="lg:col-span-7 space-y-10">
+        
+        <!-- Pilar I -->
+        <div class="space-y-3">
+          <span class="font-mono text-xs text-orange-500 tracking-widest uppercase">I. REJECTION OF DISPOSABLE NOISE</span>
+          <p class="text-neutral-300 text-base md:text-lg leading-relaxed font-light">
+            Fast fashion produces disposable garments engineered to dissolve into the noise of fleeting trends. Tailwear exists to break that inertia. We do not design to please the crowd or follow the accelerated pace of passive consumption. Every piece is conceived not as cosmetic decoration, but as <strong class="text-neutral-100 font-medium">urban armor</strong> and a <strong class="text-neutral-100 font-medium">portable habitat</strong> structured to withstand daily friction.
+          </p>
+        </div>
+
+        <!-- Pilar II -->
+        <div class="space-y-3 pt-6 border-t border-neutral-800/60">
+          <span class="font-mono text-xs text-orange-500 tracking-widest uppercase">II. PROTECTION, VISIBILITY & PURPOSE</span>
+          <p class="text-neutral-300 text-base md:text-lg leading-relaxed font-light">
+            We operate through intentional production and closed batches, prioritizing textile architecture, heavyweight fabrics, and high-durability reflective engineering. Built for individuals with their own criteria who claim physical presence on the asphalt without asking for permission.
+          </p>
+        </div>
+
+        <!-- CTA hacia la página completa About Us -->
+        <div class="pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-[1px] bg-orange-500"></span>
+            <span class="font-mono text-xs text-neutral-400 tracking-widest uppercase">DESIGNED TO STAND OUT.</span>
+          </div>
+
+          <a 
+            href="pages/about_us.html" 
+            class="inline-flex items-center gap-3 border border-neutral-700 hover:border-orange-500 bg-neutral-900/50 hover:bg-neutral-900 text-neutral-200 hover:text-orange-500 font-mono text-xs tracking-widest uppercase px-6 py-3.5 transition-colors duration-200"
+          >
+            <span>Read Full Manifesto</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!--ALEJANDRO: MANIFEST SECTION-->
+
+<!-- FOOTER: JUANJO LIDER  -->
+
+  <footer class="border-t border-neutral-800 bg-neutral-950 px-4 pb-8 pt-16 md:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="/index.html" class="font-['UnifrakturCook'] text-3xl text-white">Tailwear</a>
+          <p class="max-w-xs text-sm leading-relaxed text-neutral-400">Clothing with character.</p>
+          <ul class="mt-6 flex gap-3" aria-label="Social media">
+            <li><a href="https://www.facebook.com" aria-label="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg></a></li>
+            <li><a href="https://www.instagram.com" aria-label="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg></a></li>
+            <li><a href="https://www.youtube.com" aria-label="YouTube" class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-black text-white transition-colors hover:border-orange-500 hover:text-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg></a></li>
+            </ul>
+        </div>
+        <nav aria-label="Shop">
+          <h2 class="text-xs font-black uppercase tracking-[0.2em] text-white">Shop</h2>
+          <ul class="mt-4 space-y-3 text-sm text-neutral-400"><li><a href="#collections" class="transition-colors hover:text-orange-500">New arrivals</a></li><li><a href="#collections" class="transition-colors hover:text-orange-500">Hoodies</a></li><li><a href="#collections" class="transition-colors hover:text-orange-500">T-shirts</a></li><li><a href="#collections" class="transition-colors hover:text-orange-500">Collections</a></li></ul>
+        </nav>
+        <nav aria-label="Help">
+          <h2 class="text-xs font-black uppercase tracking-[0.2em] text-white">Help</h2>
+          <ul class="mt-4 space-y-3 text-sm text-neutral-400"><li><a href="#" class="transition-colors hover:text-orange-500">Shipping</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Returns</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Size guide</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Contact</a></li></ul>
+        </nav>
+        <nav aria-label="People">
+          <h2 class="text-xs font-black uppercase tracking-[0.2em] text-white">The Creators</h2>
+          <ul class="mt-4 space-y-3 text-sm text-neutral-400"><li><a>Alejandro Gaviria</a></li><li><a>Juan Jose Medina</a></li><li><a>Santiago Rua</a></li><li><a>Juan Jose Arboleda</a></li></ul>
+        </nav>
+      </div>
+      <div class="mt-16 flex flex-col gap-4 border-t border-neutral-800 pt-6 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; 2026 Tailwear. All rights reserved.</p>
+        <ul class="flex gap-6"><li><a href="#" class="transition-colors hover:text-orange-500">Privacy</a></li><li><a href="#" class="transition-colors hover:text-orange-500">Terms</a></li></ul>
+      </div>
+    </div>
+  </footer>
+<!-- FOOTER: JUANJO LIDER  -->
+  <script src="cart.js"></script>
+</body>
+</html>
